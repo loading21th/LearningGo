@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>登录</title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <style type="text/css">
+        body {background-color:#A6FFFF}
+        </style>
+	</head>
+
+	<body >
+		<div class="container">
+            <div class = "row">
+			    <img class="col-sm-1" alt="logo" src="../images/logo.png" />
+					<ul class="col-sm-1 col-sm-push-10">
+					   <li class="e"><a href="./register.html">注册</a></li>
+					</ul>
+            </div>
+		</div>
+
+        <br />
+		<div class="container">
+			<div class="row">
+                <div class="image-box col-sm-3 "><img src="../images/big.jpg" /></div>
+		    	<div class="login-box col-sm-4 col-sm-push-4">
+		    		<h3 class="title">登录</h3>
+		            	<br />
+		    			<div class="login-form">
+		    			    <form>
+		    			        <div class="user-name">
+		    			    	    <label for="user"><i class="am-icon-user"></i></label>
+		    			    			<input type="text" name="" id="user" placeholder="用户名"/>
+                                </div>
+                                <br />
+                                <div class="user-pass">
+		    		        	    <label for="password"><i class="am-icon-lock"></i></label>
+		    		        	    <input type="password" name="" id="password" placeholder="请输入密码">
+                                </div>
+                            </form>
+                        </div>
+                        <br />
+                        <div class="login-links">
+                            <label for="remember-me"><input id="remember-me" type="checkbox">记住密码</label>
+		            			<a href="#" class="am-fr">忘记密码</a>
+		            			<br />
+                        </div>
+		            	<div class="am-cf">
+		            		<input type="submit" onclick="file_upload('no')" value="登 录" class="am-btn am-btn-primary am-btn-sm">
+		            	</div>
+		    	</div>
+			</div>
+		</div>
+
+
+	</body>
+
+<script>
+	function file_upload(is_index)
+    {
+        var form_data = new FormData();
+		if (is_index == "no")
+		{
+            var name = document.getElementById('user').value;
+            var passwd = document.getElementById('password').value;
+            form_data.append("name",name);
+            form_data.append("passwd",passwd);
+		}
+        $.ajax({
+            type:'POST',
+            url :'/LearningGo/login.html',
+            data:form_data, 
+            contentType:false,
+            processData:false,
+            mimeType:"multipart/form-data",
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = JSON.parse(arg).status;
+                if(val == 'success')
+                {
+                    alert('请求成功');
+                    window.location.href=('/LearningGo/index.html');
+                }
+   	        }
+        });
+    }
+</script>
+</html>
