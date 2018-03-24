@@ -14,7 +14,7 @@
 	<body >
 		<div class="container">
             <div class = "row">
-			    <img class="col-sm-1" alt="logo" src="../images/logo.png" />
+                <img class="col-sm-1" alt="logo" src="/static/images/logo.png" />
 					<ul class="col-sm-2 col-sm-offset-10">
 					   <li class="col-sm-6"><a href="./index.html">首页</a></li>
 					   <li class="col-sm-6"><a href="./login.html">注销</a></li>
@@ -27,13 +27,13 @@
 		<div class="container">
 			<div class="row">
                 <div class="col-sm-2" style="border-style:solid;height:180px;">
-                    <img  style="height:90%;width:90%;padding-top:10%" src="../images/school.jpg"></img>
+                    <img  style="height:95%;width:95%;padding-top:5%" src={{logo}}></img>
                 </div>
                 <div  class="col-sm-10" align="cneter" style="border-style:solid;height:180px;padding-top:10px">
                     <h3>钱包</h3>
                     <div  class="col-sm-10 col-sm-offset-1" >
                         <label>账户余额：</label>
-                        <label id="yue">{{yue}}</label>
+                        <label id="yue">{{user.umoney}}</label>
                         <label>棋子</label>
                     </div>
                     <br />
@@ -49,18 +49,29 @@
         <h2>基本信息</h2>
 		<div class="container">
 			<div class="row">
-                <div class="col-sm-12"  style="height:240px;border-style:solid;padding-top:10px;padding-bottom:10px">
+                <div class="col-sm-12"  style="height:150px;border-style:solid;padding-top:10px;padding-bottom:10px">
                     <div class="container col-sm-12">
                         <input class="col-sm-4 col-sm-offset-1" type ="text"  value="用户身份：学生">
-                        <button class="col-sm-4 col-sm-offset-2" data-toggle="modal" data-target="#update">升级</button>
-		    		    <form>
-		    		        <input class="col-sm-10 col-sm-offset-1" type="text"   placeholder="用户名">
-		    		        <input class="col-sm-10 col-sm-offset-1" type="text"   placeholder="邮    箱">
-		    		        <input class="col-sm-10 col-sm-offset-1" type="text"   placeholder="出生年月: 格式2000-01-01">
-		    		        <input class="col-sm-10 col-sm-offset-1" type="text"   placeholder="性    别：男/女">
-                            <button  class="col-sm-4 col-sm-offset-1">用户头像</button>
-                            <input class="col-sm-4 col-sm-offset-2" type="submit"     value="上传"/>
-		            		<input class="col-sm-4 col-sm-offset-4" type="submit"  value="提 交" >
+                        <button class="col-sm-4 col-sm-offset-2" onclick="can_upgrade()" >升级</button>
+		    		    <form >
+                            <div  class="col-sm-4 col-sm-offset-1" >
+                                <label>昵    称：</label>
+                                <input type="text" value={{user.name}} />
+                            </div>
+                            <div  class="col-sm-4 col-sm-offset-2" >
+                                <label>邮    箱：</label>
+                                <input type="text" value={{user.uemail}} />
+                            </div>
+                            <div  class="col-sm-4 col-sm-offset-1" >
+                                <label>出生年月：</label>
+                                <input type="text" value={{user.ubirth}} />
+                            </div>
+                            <div  class="col-sm-4 col-sm-offset-2" >
+                                <label>性    别：</label>
+                                <input type="text" value={{user.usex}} />
+                            </div>
+                            <input  class="col-sm-4 col-sm-offset-1" type ="file" name="用户头像" />
+		            		<input class="col-sm-4 col-sm-offset-2" type="submit"  value="提 交" >
                         </form>
                     </div>
 		    	</div>
@@ -115,11 +126,11 @@
                     <div class="modal-body">
                         <label>向用户：围棋教育系统</label>
                         <label>支付</label>
-                        <input  type ="text"  value="100"/>
+                        <input  type ="text" id="money_pay_sum"  value="100"/>
                         <label>棋子</label>
                     </div>
                     <div class="modal-footer">
-                        <a href="schoolinfo.html" class="btn btn-success">确认</a>
+                        <button onclick="updatemoney('pay_to_sys')" clbuttonss="btn btn-success">确认</button>
                         <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
                     </div>
                 </div>
@@ -135,7 +146,7 @@
                     </div>
                     <div class="modal-body">
                         <label>充值</label>
-                        <input  type ="text" id="moneysum" value="100"/>
+                        <input  type ="text" id="money_add_sum" value="100"/>
                         <label>棋子</label>
                     </div>
                     <div class="modal-footer">
@@ -155,7 +166,7 @@
                     </div>
                     <div class="modal-body">
                         <label>提现</label>
-                        <input  type ="text"  id="moneysum" value="100"/>
+                        <input  type ="text"  id="money_del_sum" value="100"/>
                         <label>棋子</label>
                     </div>
                     <div class="modal-footer">
@@ -167,7 +178,7 @@
         </div>
     
         <!--升级模态框-->
-        <div id="update" class="modal fade in"  role="dialog" aria-hidden="true">
+        <div id="upgrade" class="modal fade in"  role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -176,22 +187,22 @@
                     </div>
                     <div class="modal-body container">
                         <div class="col-sm-10 col-sm-offset-1">
-                            <div class="col-sm-2">资历描述:</div>
+                            <div class="col-sm-2" >资历描述:</div>
                             <div class="col-sm-10 ">
-                                <textarea  rows="10" cols="30">描述您的围棋教学经历</textarea>
+                                <textarea  rows="10" cols="30" id="descripition">描述您的围棋教学经历</textarea>
                             </div>
                             <div class="col-sm-2">段位证书：</div>
                             <div class="col-sm-10 ">
-                                <img src="../images/upload.jpg" style="height:40px;width:40px">
+                                <input id="Go_credential" src="/static/images/upload.jpg" type="file" style="height:40px;width:90px">
                             </div>
                             <div class="col-sm-2">教学证明</div>
                             <div class="col-sm-10">
-                                <img src="../images/upload.jpg" style="height:40px;width:40px">
+                                <input id="teach_credential" src="/static/images/upload.jpg" type="file" style="height:40px;width:90px">
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="schoolinfo.html" class="btn btn-success">确认</a>
+                        <button href="schoolinfo.html" onclick="upgradeinfo()" class="btn btn-success">确认</button>
                         <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
                     </div>
                 </div>
@@ -203,14 +214,30 @@
 <script>
 	function updatemoney(is_add)
     {
-        var money = document.getElementById('moneysum').value;
+        var money_update_sum = 0;
+        var urlpath = '';
+        if (is_add == "yes")
+        {
+            money_update_sum = document.getElementById('money_add_sum').value;
+            urlpath='/LearningGo/userinfo/wallet';
+        }
+        else if (is_add == "no")
+        {
+            money_update_sum = document.getElementById('money_del_sum').value;
+            urlpath='/LearningGo/userinfo/wallet';
+        }
+        else if (is_add == "pay_to_sys")
+        {
+            money_update_sum = document.getElementById('money_pay_sum').value;
+            urlpath='/LearningGo/userinfo/buyupgrade';
+        }
         var yue = document.getElementById('yue').value;
         var form_data = new FormData();
-        form_data.append("moneysum",money);
+        form_data.append("money_update_sum",money_update_sum);
         form_data.append("is_add",is_add);
         $.ajax({
             type:'POST',
-            url :'/LearningGo/userinfo/student',
+            url :urlpath,
             data:form_data, 
             contentType:false,
             processData:false,
@@ -221,7 +248,66 @@
             },
             success:function(arg)
             {
-                window.location.href=('/LearningGo/userinfo/student');
+				val = JSON.parse(arg).status;
+                if(val == 'success')
+                {
+                    window.location.href=('/LearningGo/userinfo/student');
+                }else{
+                    alert(val);
+                }
+   	        }
+        });
+    }
+	function can_upgrade()
+    {
+        $.ajax({
+            type:'GET',
+            url :'/LearningGo/userinfo/buyupgrade',
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = arg["status"];
+                if(val == "success")
+                {
+                    $("#upgrade").modal("show");
+                }else{
+                    $("#zhifu").modal("show");
+                }
+   	        }
+        });
+    }
+	function upgradeinfo()
+    {
+        var form_data = new FormData();
+        var descripition = document.getElementById("descripition").value;
+        var Go_credential = document.getElementById("Go_credential").files[0];
+        var teach_credential = document.getElementById("teach_credential").files[0];
+        form_data.append("descripition",descripition);
+        form_data.append("Go_credential",Go_credential);
+        form_data.append("teach_credential",teach_credential);
+        $.ajax({
+            type:'POST',
+            url :'/LearningGo/userinfo/upgradeinfo',
+            data:form_data, 
+            contentType:false,
+            processData:false,
+            mimeType:"multipart/form-data",
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = JSON.parse(arg).status;
+                if(val == 'success')
+                {
+                    window.location.href=('/LearningGo/userinfo/teacher');
+                }else{
+                    alert('升级失败');
+                }
    	        }
         });
     }

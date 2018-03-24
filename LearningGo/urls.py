@@ -20,6 +20,10 @@ from golearnApp.goviews import IndexView
 from golearnApp.goviews import RegisterView
 from golearnApp.goviews import LoginView
 from golearnApp.goviews import StudentView
+from golearnApp.goviews import TeacherView
+from golearnApp.goviews import BuyUpgradeView
+from golearnApp.goviews import UpgradeinfoView
+from golearnApp.goviews import WalletView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -27,6 +31,10 @@ urlpatterns = [
     url(r'^LearningGo/login.html', LoginView.LoginView.as_view()),
     url(r'^LearningGo/index.html',IndexView.IndexView.as_view()),
     url(r'^LearningGo/userinfo/student',StudentView.StudentView.as_view()),
+    url(r'^LearningGo/userinfo/buyupgrade',BuyUpgradeView.BuyUpgradeView.as_view()),
+    url(r'^LearningGo/userinfo/upgradeinfo',UpgradeinfoView.UpgradeinfoView.as_view()),
+    url(r'^LearningGo/userinfo/teacher',TeacherView.TeacherView.as_view()),
+    url(r'^LearningGo/userinfo/wallet',WalletView.WalletView.as_view()),
     ]
 '''
     url(r'^LearningGo/index/videos/(?P<stage>\d+)',FindVideosView.FindVideosView.as_view()),
@@ -37,12 +45,10 @@ urlpatterns = [
     url(r'^LearningGo/hlsroom/homework_upload/(?P<campus_name>.*)/(?P<class_name>)/',HomeworkUpView.HomeworkUpView.as_view()),
     url(r'^LearningGo/hlsroom/courseware_download/(?P<campus_name>.*)/(?P<class_name>)/',CoursewareDownView.CoursewareDownView.as_view()),
     url(r'^LearningGo/userinfo/student',StudentView.StudentView.as_view()),
-    url(r'^LearningGo/userinfo/wallet',WalletView.WalletView.as_view()),
     url(r'^LearningGo/userinfo/updateinfo',UpdateinfoView.UpdateinfoView.as_view()),
     url(r'^LearningGo/userinfo/buyupgrade',BuyUpgradeView.BuyUpgradeView.as_view()),
     url(r'^LearningGo/userinfo/upgradeinfo',UpgradeinfoView.UpgradeinfoView.as_view()),
     url(r'^LearningGo/userinfo/delclass/(?P<class_room>)',DelClassView.DelClassView.as_view()),
-    url(r'^LearningGo/userinfo/teacher',TeacherView.TeacherView.as_view()),
     url(r'^LearningGo/userinfo/buycreatecampus',BuyCreateCampusView.BuyCreateCampusView.as_view()),
     url(r'^LearningGo/userinfo/addcampus',AddCampusView.AddCampusView.as_view()),
     url(r'^LearningGo/userinfo/updateclass/(?P<campus_name>.*)/(?P<class_name>)/',UpdateClassView.UpdateClassView.as_view()),

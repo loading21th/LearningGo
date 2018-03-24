@@ -1,0 +1,270 @@
+
+Internal Server Error: /LearningGo/userinfo/student
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/StudentView.py", line 21, in get
+    logo = os.path.join('static','image',student.name,os.path.basename(student.uimage))
+  File "/usr/lib/python3.5/posixpath.py", line 139, in basename
+    i = p.rfind(sep) + 1
+AttributeError: 'ImageFieldFile' object has no attribute 'rfind'
+Not Found: /LearningGo/userinfo/static/image/liyao/60D51EF643D710A234D75A65A5B28ADC.JPG
+Internal Server Error: /LearningGo/userinfo/buyupgrade
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/BuyUpgradeView.py", line 19, in get
+    student =  BaseTable.Ustudentinfo.objects.get(name=name)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+golearnApp.gomodels.BaseTable.DoesNotExist: Ustudentinfo matching query does not exist.
+Internal Server Error: /LearningGo/userinfo/teacher
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/TeacherView.py", line 21, in get
+    logo = os.path.join('static','image',teacher.name,os.path.basename(teacher.uimage))
+  File "/usr/lib/python3.5/posixpath.py", line 139, in basename
+    i = p.rfind(sep) + 1
+AttributeError: 'ImageFieldFile' object has no attribute 'rfind'
+Not Found: /LearningGo/userinfo/static/image/liyao/60D51EF643D710A234D75A65A5B28ADC.JPG
+Not Found: /admin/golearnApp/ustudentinfo/1/change/
+Not Found: /admin/golearnApp
+Not Found: /LearningGo/userinfo/static/image/liyao/60D51EF643D710A234D75A65A5B28ADC.JPG
+Internal Server Error: /LearningGo/userinfo/wallet
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/WalletView.py", line 28, in post
+    user = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+golearnApp.gomodels.BaseTable.DoesNotExist: Ustudentinfo matching query does not exist.
+Internal Server Error: /LearningGo/register.html
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 416, in __init__
+    val = kwargs.pop(field.attname)
+KeyError: 'id'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/RegisterView.py", line 28, in post
+    student = BaseTable.Ustudentinfo(name=uname,upasswd=passwd,uemail=email,ubirth=birth,usex=sex,uimage=file_obj,umoney=1)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 422, in __init__
+    val = field.get_default()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 797, in get_default
+    return self.default()
+  File "./golearnApp/gomodels/BaseTable.py", line 20, in get_id
+    userid = userid + 1
+UnboundLocalError: local variable 'userid' referenced before assignment
+Internal Server Error: /LearningGo/userinfo/upgradeinfo
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/UpgradeinfoView.py", line 32, in post
+    teacher = BaseTable.Uteacherinfo(id=stuident.id,name=student.name,upasswd=student.upasswd,uemail=student.uemail,ubirth=student.ubirth,uimage=student.uimage,umoney=student.umoney,usex=student.usex,uGo_credential=request.POST.get("uGo_credential"),uTeach_credential=request.POST.get("teach_credential"),udescripition=request.POST.get("descripition"),can_createschool=False)
+NameError: name 'stuident' is not defined
+Not Found: /admin/golearnApp/uteacherinfo/1/change/
+Internal Server Error: /LearningGo/userinfo/wallet
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/WalletView.py", line 28, in post
+    user = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+golearnApp.gomodels.BaseTable.DoesNotExist: Ustudentinfo matching query does not exist.
+Internal Server Error: /LearningGo/userinfo/wallet
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/WalletView.py", line 28, in post
+    user = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+golearnApp.gomodels.BaseTable.DoesNotExist: Ustudentinfo matching query does not exist.
+Internal Server Error: /LearningGo/register.html
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/RegisterView.py", line 29, in post
+    student.save()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 700, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 728, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 793, in _save_table
+    forced_update)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 843, in _do_update
+    return filtered._update(values) > 0
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 645, in _update
+    return query.get_compiler(self.db).execute_sql(CURSOR)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1153, in execute_sql
+    cursor = super(SQLUpdateCompiler, self).execute_sql(result_type)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 841, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1121, in as_sql
+    val = field.get_db_prep_save(val, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 728, in get_db_prep_save
+    prepared=False)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1301, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1296, in get_prep_value
+    return self.to_python(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1273, in to_python
+    params={'value': value},
+django.core.exceptions.ValidationError: ["'1992-06020' value has an invalid date format. It must be in YYYY-MM-DD format."]
+Internal Server Error: /LearningGo/userinfo/wallet
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/WalletView.py", line 30, in post
+    if not users.exists():
+AttributeError: 'Ustudentinfo' object has no attribute 'exists'
+Internal Server Error: /LearningGo/userinfo/upgradeinfo
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/UpgradeinfoView.py", line 40, in post
+    uGo_credential=request.FIFLES.getlist("uGo_credential")[0],
+AttributeError: 'WSGIRequest' object has no attribute 'FIFLES'
+Internal Server Error: /LearningGo/userinfo/upgradeinfo
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/UpgradeinfoView.py", line 40, in post
+    uGo_credential=request.FIFLS.getlist("uGo_credential")[0],
+AttributeError: 'WSGIRequest' object has no attribute 'FIFLS'
+Internal Server Error: /LearningGo/userinfo/upgradeinfo
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/UpgradeinfoView.py", line 40, in post
+    uGo_credential=request.FILES.getlist("uGo_credential")[0],
+IndexError: list index out of range
+Internal Server Error: /LearningGo/userinfo/upgradeinfo
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/UpgradeinfoView.py", line 41, in post
+    uTeach_credential=request.FILES.getlist("teach_credential")[0],
+IndexError: list index out of range
+Not Found: /admin/golearnApp/ustudentinfo/2/delete/
+Not Found: /admin/golearnApp/ustudentinfo/2/change/

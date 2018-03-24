@@ -14,24 +14,13 @@ import json
 
 class IndexView(View):
     def get(self,request):
-        print('********************8')
-        print(request.session['name'])
-        print('********************8')
-        return render(request,'index.html');
+        result={"user":"student"}
+        if request.session['uid'] > 99999:
+            result["user"] = "teacher"
+        return render(request,'index.html',result);
     
     @csrf_exempt
     def post(self,request):
-        if request.FILES:
-            file_obj = request.FILES.getlist('filename')[0]
-            uname = request.POST.get('name')
-            passwd = request.POST.get('passwd')
-            email = request.POST.get('email')
-            birth = request.POST.get('birth')
-            sex = request.POST.get('sex')
-            print('*********in post**********')
-            student = BaseTable.Ustudentinfo(name=uname,upasswd=passwd,uemail=email,ubirth=birth,usex=sex,uimage=file_obj,umoney=1)
-            student.save()
-        print('*********save over**********')
         hlsdic = {'status':'success'}
         response = JsonResponse(hlsdic, safe=False)
         response["Access-Control-Allow-Origin"] = "*"

@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from golearnApp.gomodels import BaseTable
 import os 
 import json
+import logging
 
 
 
@@ -20,12 +21,15 @@ class LoginView(View):
     @csrf_exempt
     def post(self,request):
         name = request.POST.get('name')
-        student =  BaseTable.Ustudentinfo.objects.get(name=name)
-        hlsdic = {'status':'fail'}
-        if ( (request.POST.get('passwd')) == student.upasswd ):
-            request.session['name']=name
-            hlsdic['status'] = 'success'
-        response = JsonResponse(hlsdic, safe=False)
+        result = {'status':'fail'}
+        users =  BaseTable.Ustudentinfo.objects.filter(name=name)
+        if not users.exists():
+            users = BaseTable.Uteacherinfo.objects.filter(name=name)
+        if users.exists():
+            if ( (request.POST.get('passwd')) == users[0].upasswd ):
+                request.session['uid']=users[0].id
+                result['status'] = 'success'
+        response = JsonResponse(result, safe=False)
         response["Access-Control-Allow-Origin"] = "*"
         response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
         response["Access-Control-Max-Age"] = "1000"

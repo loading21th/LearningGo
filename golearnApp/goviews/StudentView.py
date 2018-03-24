@@ -15,26 +15,40 @@ import json
 
 class StudentView(View):
     def get(self,request):
-        print(request.session['name'])
-        student = BaseTable.Ustudentinfo.objects.get(name=request.session['name'])
+        student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
         context = {}
-        context['yue'] = student.umoney
+        context['user'] = student
+        logo = os.path.join('/static','image',student.name,os.path.basename(student.uimage.url))
+        context['logo'] = logo
         return render(request,'studentinfo.html',context);
-
+'''
     @csrf_exempt
     def post(self,request):
         student = BaseTable.Ustudentinfo.objects.get(name=request.session['name'])
-        moneysum = request.POST.get('moneysum')
-        print(moneysum)
+        nowmoney = student.umoney
+        money_update_sum = request.POST.get('money_update_sum')
+        stat = "操作失败，请重试"
+
         if (request.POST.get('is_add')== "yes"):
-            student.umoney = student.umoney + int(moneysum)
+            nowmoney = nowmoney + int(money_update_sum)
         else:
-            student.umoney = student.umoney - int(moneysum)
-        student.save()
-        hlsdic = {'status':student.umoney}
-        response = JsonResponse(hlsdic, safe=False)
+            nowmoney = nowmoney - int(money_update_sum)
+
+        if nowmoney < 0:
+            stat = "提款失败，余额不足"
+        elif nowmoney > 10000:
+            stat = "充值资金过多，有风险"
+        else:
+            stat = "success"
+            student.umoney = nowmoney
+            if (request.POST.get('is_add')== "pay_to_sys"):
+                student.can_upgrade  = True
+            student.save()
+        result = {'status':stat}
+        response = JsonResponse(result, safe=False)
         response["Access-Control-Allow-Origin"] = "*"
         response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
         response["Access-Control-Max-Age"] = "1000"
         response["Access-Control-Allow-Headers"] = "*"
         return response
+'''

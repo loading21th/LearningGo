@@ -25,10 +25,8 @@ class RegisterView(View):
             email = request.POST.get('email')
             birth = request.POST.get('birth')
             sex = request.POST.get('sex')
-            print('*********in post**********')
             student = BaseTable.Ustudentinfo(name=uname,upasswd=passwd,uemail=email,ubirth=birth,usex=sex,uimage=file_obj,umoney=1)
             student.save()
-        print('*********save over**********')
         hlsdic = {'status':'success'}
         response = JsonResponse(hlsdic, safe=False)
         response["Access-Control-Allow-Origin"] = "*"

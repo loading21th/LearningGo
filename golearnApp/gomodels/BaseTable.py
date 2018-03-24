@@ -2,21 +2,29 @@ import os
 from django.db import  models
 
 AppPath =  os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+userid = 0 
 
 def get_image_path(instance,filename):
-    file_path = os.path.join(AppPath,'image',instance.name,filename)
+    file_path = os.path.join(AppPath,'static','image',instance.name,filename)
     return file_path
 
 def get_upfile_path(instance,filename):
-    file_path = os.path.join(AppPath,'uploadfile',instance.schoolname,instance.classname,filename)
+    file_path = os.path.join(AppPath,'uploadfile',instance.Campus.abbreviation,instance.classroom.abbreviation,filename)
     return file_path
 
 def get_video_path(instance,filename):
-    file_path = os.path.join(AppPath,'goTemplates','videos',filename)
+    file_path = os.path.join(AppPath,'static','videos',filename)
     return file_path
+
+def get_id():
+    global userid
+    userid = userid + 1
+    return userid
+
 
 
 class Userinfo(models.Model):
+    id = models.IntegerField(default=get_id,primary_key=True)
     name = models.CharField(max_length=40)
     upasswd = models.CharField(max_length=40)
     uemail = models.EmailField(max_length=40)
@@ -28,7 +36,7 @@ class Userinfo(models.Model):
          abstract = True
 
 class Ustudentinfo(Userinfo):
-    can_update = models.BooleanField(default=False)
+    can_upgrade = models.BooleanField(default=False)
 
 class Uteacherinfo(Userinfo):
     uGo_credential = models.ImageField(upload_to=get_image_path)
@@ -36,7 +44,7 @@ class Uteacherinfo(Userinfo):
     udescripition = models.TextField() 
     can_createschool = models.BooleanField(default=0) 
 
-class campus(models.Model):
+class Campus(models.Model):
     name = models.CharField(max_length=40)
     abbreviation = models.CharField(max_length=10) 
     stage = models.CharField(max_length=40)
@@ -46,7 +54,7 @@ class campus(models.Model):
     teacher = models.ForeignKey('Uteacherinfo')
     can_createclass = models.BooleanField(default=0) 
 
-class classroom(models.Model):
+class Classroom(models.Model):
     name = models.CharField(max_length=40)
     abbreviation = models.CharField(max_length=10) 
     teacher = models.CharField(max_length=40) 
@@ -56,22 +64,23 @@ class classroom(models.Model):
     time = models.TextField() 
     price = models.IntegerField()
     rtmpaddr = models.CharField(max_length=40)
-    campus = models.ForeignKey('campus')
+    campus = models.ForeignKey('Campus')
 
-class students_classes(models.Model):
+class Students_classes(models.Model):
     student = models.ForeignKey('Ustudentinfo')
-    classroom = models.ForeignKey('classroom')
+    classroom = models.ForeignKey('Classroom')
 
 
-class teacher_classes(models.Model):
+class Teacher_classes(models.Model):
     teacher = models.ForeignKey('Uteacherinfo')
     classroom = models.ForeignKey('classroom')
 
-class homework(models.Model):
-    classroom = models.ForeignKey('classroom')
+class Homework(models.Model):
+    campus = models.ForeignKey('Campus')
+    classroom = models.ForeignKey('Classroom')
     homework = models.FileField(upload_to=get_upfile_path)
 
-class videos(models.Model):
+class Videos(models.Model):
     stage = models.IntegerField()
     name = models.CharField(max_length=40)
     logo = models.ImageField(upload_to=get_image_path)

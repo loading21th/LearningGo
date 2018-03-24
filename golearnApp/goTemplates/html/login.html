@@ -14,7 +14,7 @@
 	<body >
 		<div class="container">
             <div class = "row">
-			    <img class="col-sm-1" alt="logo" src="../images/logo.png" />
+			    <img class="col-sm-1" alt="logo" src="/static/images/logo.png" />
 					<ul class="col-sm-1 col-sm-push-10">
 					   <li class="e"><a href="./register.html">注册</a></li>
 					</ul>
@@ -24,7 +24,7 @@
         <br />
 		<div class="container">
 			<div class="row">
-                <div class="image-box col-sm-3 "><img src="../images/big.jpg" /></div>
+                <div class="image-box col-sm-3 "><img src="/static/images/big.jpg" /></div>
 		    	<div class="login-box col-sm-4 col-sm-push-4">
 		    		<h3 class="title">登录</h3>
 		            	<br />
@@ -84,7 +84,6 @@
 				val = JSON.parse(arg).status;
                 if(val == 'success')
                 {
-                    alert('请求成功');
                     window.location.href=('/LearningGo/index.html');
                 }
    	        }
