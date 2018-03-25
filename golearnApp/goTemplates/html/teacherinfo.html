@@ -52,7 +52,7 @@
                 <div class="col-sm-12"  style="height:240px;border-style:solid;padding-top:10px;padding-bottom:10px">
                     <div class="container col-sm-12">
                         <input class="col-sm-4 col-sm-offset-1" type ="text"  value="用户身份：教师">
-                        <button class="col-sm-4 col-sm-offset-2" onclick="#createschool()" >创建新学校</button>
+                        <button class="col-sm-4 col-sm-offset-2" onclick="can_createcampus()" >创建新学校</button>
 		    		    <form >
                             <div  class="col-sm-4 col-sm-offset-1" >
                                 <label>昵    称：</label>
@@ -80,11 +80,11 @@
 
 
         <br />
-        <h2>相关课程</h2>
+        <h2>已开设学校与课程</h2>
         <br />
 		<div class="container">
 			<div class="row" style="border-style:solid;">
-                <h3>XXX围棋学校</h3>
+                <h3 id="campus_name"></h3>
                 <div class="col-sm-12" style="border-style:solid;margin-top:10px;margin-bottom:10px">
                     <h3>课程：初级入门</h3>
                     <br />
@@ -118,12 +118,12 @@
                         <button>删除</button>
                     </div>
                 </div>
-                <button class="col-sm-4 col-sm-offset-4" data-toggle="modal" data-target="#createnewclass">开设新课程</button>
+                <button class="col-sm-4 col-sm-offset-4" onclick="can_createclass()" >开设新课程</button>
 			</div>
 		</div>
 
-        <!--支付模态框-->
-        <div id="zhifu" class="modal fade in" role="dialog" aria-hidden="true">
+        <!--购买建校权限模态框-->
+        <div id="buy_createcampus" class="modal fade in" role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -133,11 +133,34 @@
                     <div class="modal-body">
                         <label>向用户：围棋教育系统</label>
                         <label>支付</label>
-                        <input  type ="text"  value="100"/>
+                        <input  id="money_buy_campus" type ="text"  value="100"/>
                         <label>棋子</label>
                     </div>
                     <div class="modal-footer">
-                        <a href="schoolinfo.html" class="btn btn-success">确认</a>
+                        <button onclick="updatemoney('createcampus')" clbuttonss="btn btn-success">确认</button>
+                        <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--购买开课资格模态框-->
+        <div id="buy_createclass" class="modal fade in" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a class="close" data-dismiss="modal">×</a>
+                        <h3 class="modal-title">支付页面</h3>
+                    </div>
+                    <div class="modal-body">
+                        <label>向用户：围棋教育系统</label>
+                        <label>支付</label>
+                        <input  id="money_abu_class" type ="text"  value="100"/>
+                        <label>棋子</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="updatemoney('createclass')" clbuttonss="btn btn-success">确认</button>
                         <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
                     </div>
                 </div>
@@ -186,40 +209,8 @@
             </div>
         </div>
     
-        <!--升级模态框-->
-        <div id="update" class="modal fade in"  role="dialog" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <a class="close" data-dismiss="modal">×</a>
-                        <h3 class="modal-title">用户升级页面</h3>
-                    </div>
-                    <div class="modal-body container">
-                        <div class="col-sm-10 col-sm-offset-1">
-                            <div class="col-sm-2">资历描述:</div>
-                            <div class="col-sm-10 ">
-                                <textarea  rows="10" cols="30">描述您的围棋教学经历</textarea>
-                            </div>
-                            <div class="col-sm-2">段位证书：</div>
-                            <div class="col-sm-10 ">
-                                <img src="/static/images/upload.jpg" style="height:40px;width:40px">
-                            </div>
-                            <div class="col-sm-2">教学证明</div>
-                            <div class="col-sm-10">
-                                <img src="/static/images/upload.jpg" style="height:40px;width:40px">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="schoolinfo.html" onclick="upgradeinfo()"class="btn btn-success">确认</a>
-                        <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <!--创建学校模态框-->
-        <div id="createschool" class="modal fade in"  role="dialog" aria-hidden="true">
+        <div id="createnewcampus" class="modal fade in"  role="dialog" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -230,32 +221,32 @@
                         <div class="col-sm-10 col-sm-offset-1">
                             <div class="col-sm-2">学校名称:</div>
                             <div class="col-sm-10 ">
-                                <input placeholder="学校全称"></input>
+                                <input id="campus_name" placeholder="学校全称"></input>
                             </div>
                             <div class="col-sm-2">学校简写:</div>
                             <div class="col-sm-10 ">
-                                <input placeholder="学校英文缩写"></input>
+                                <input id="campus_abbr"  placeholder="学校英文缩写"></input>
                             </div>
                             <div class="col-sm-2">学校所属段位:</div>
                             <div class="col-sm-10 ">
-                                <input placeholder="初级入门"></input>
+                                <input id="campus_stage"  placeholder="初级入门"></input>
                             </div>
                             <div class="col-sm-2">教学宗旨:</div>
                             <div class="col-sm-10 ">
-                                <textarea  rows="10" cols="30">描述教学宗旨</textarea>
+                                <textarea id="campus_pupose"   rows="10" cols="30">描述教学宗旨</textarea>
                             </div>
                             <div class="col-sm-2">学校描述:</div>
                             <div class="col-sm-10 ">
-                                <textarea  rows="10" cols="30">介绍您的学校</textarea>
+                                <textarea id="campus_bio"   rows="10" cols="30">介绍您的学校</textarea>
                             </div>
                             <div class="col-sm-2">学校Logo：</div>
                             <div class="col-sm-10 ">
-                                <img src="/static/images/upload.jpg" style="height:40px;width:40px">
+                                <input id="campus_logo" class="col-sm-4" type ="file" name="学校Logo" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="schoolinfo.html" class="btn btn-success">确认</a>
+                        <button  onclick="createnewcampus()" class="btn btn-success">确认</button>
                         <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
                     </div>
                 </div>
@@ -274,43 +265,39 @@
                         <div class="col-sm-10 col-sm-offset-1">
                             <div class="col-sm-2">课程名称:</div>
                             <div class="col-sm-10 ">
-                                <input placeholder="课程全称"></input>
+                                <input id="class_name" placeholder="课程全称"></input>
                             </div>
                             <div class="col-sm-2">课程简写:</div>
                             <div class="col-sm-10 ">
-                                <input placeholder="课程英文缩写"></input>
+                                <input id="class_abbr"  placeholder="课程英文缩写"></input>
                             </div>
                             <div class="col-sm-2">课程所属段位:</div>
                             <div class="col-sm-10 ">
-                                <input placeholder="初级入门"></input>
-                            </div>
-                            <div class="col-sm-2">任职教师:</div>
-                            <div class="col-sm-10 ">
-                                <input placeholder="xxx老师"></input>
+                                <input id="class_stage"  placeholder="初级入门"></input>
                             </div>
                             <div class="col-sm-2">课程收费:</div>
                             <div class="col-sm-10 ">
-                                <input placeholder="100"></input>
+                                <input id="class_price"  placeholder="100"></input>
                                 <label> 棋子/位学生</label>
                             </div>
                             <div class="col-sm-2">开课时间:</div>
                             <div class="col-sm-10">
-                                <textarea  rows="10" cols="30">
+                                <textarea id="class_time"   rows="10" cols="30">
                                 2017.10.10~2017.12.31;每周周内08：00--12：00;每周周内14：00--17：00
                                 </textarea>
                             </div>
                             <div class="col-sm-2">课程描述:</div>
                             <div class="col-sm-10 ">
-                                <textarea  rows="10" cols="30">介绍您的课程</textarea>
+                                <textarea id="class_bio"   rows="10" cols="30">介绍您的课程</textarea>
                             </div>
                             <div class="col-sm-2">课程Logo：</div>
                             <div class="col-sm-10 ">
-                                <img src="/static/images/upload.jpg" style="height:40px;width:40px">
+                                <input id="class_logo" class="col-sm-4" type ="file" name="课程Logo" />
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="schoolinfo.html" class="btn btn-success" onclick="alert('rtmp:111.20.225.136:1935/xjtu/software')">确认</a>
+                        <button onclick="createnewclass()" class="btn btn-success">确认</button>
                         <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
                     </div>
                 </div>
@@ -321,19 +308,34 @@
 	function updatemoney(is_add)
     {
         var money_update_sum = 0;
+        var urlpath = '';
         if (is_add == "yes")
+        {
             money_update_sum = document.getElementById('money_add_sum').value;
+            urlpath='/LearningGo/userinfo/wallet';
+        }
         else if (is_add == "no")
+        {
             money_update_sum = document.getElementById('money_del_sum').value;
-        else if (is_add == "pay_to_sys")
-            money_update_sum = document.getElementById('money_pay_sum').value;
+            urlpath='/LearningGo/userinfo/wallet';
+        }
+        else if (is_add == "createcampus")
+        {
+            money_update_sum = document.getElementById('money_buy_campus').value;
+            urlpath='/LearningGo/userinfo/buycreatecampus';
+        }
+        else if (is_add == "createclass")
+        {
+            money_update_sum = document.getElementById('money_buy_class').value;
+            urlpath='/LearningGo/userinfo/buycreateclass';
+        }
         var yue = document.getElementById('yue').value;
         var form_data = new FormData();
         form_data.append("money_update_sum",money_update_sum);
         form_data.append("is_add",is_add);
         $.ajax({
             type:'POST',
-            url :'/LearningGo/userinfo/wallet',
+            url :urlpath,
             data:form_data, 
             contentType:false,
             processData:false,
@@ -351,6 +353,124 @@
                 }else{
                     alert(val);
                 }
+   	        }
+        });
+    }
+	function can_createcampus()
+    {
+        $.ajax({
+            type:'GET',
+            url :'/LearningGo/userinfo/buycreatecampus',
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = arg["status"];
+                if(val == "success")
+                {
+                    $("#createnewcampus").modal("show");
+                }else{
+                    $("#buy_createcampus").modal("show");
+                }
+   	        }
+        });
+    }
+	function can_createclass()
+    {
+        var campus_name = (this).parentNode.getElementById('campus_name').value;
+        var cont = {"campus_name":campus_name}
+        $.ajax({
+            type:'GET',
+            url :'/LearningGo/userinfo/buycreateclass',
+            data:cont,
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = arg["status"];
+                if(val == "success")
+                {
+                    $("#createnewclass").modal("show");
+                }else{
+                    $("#buy_createclass").modal("show");
+                }
+   	        }
+        });
+    }
+	function createnewcampus()
+    {
+        var form_data = new FormData();
+        var name = document.getElementById("campus_name").value;
+        var abbr = document.getElementById("campus_abbr").value;
+        var stage = document.getElementById("campus_stage").value;
+        var pupose = document.getElementById("campus_pupose").value;
+        var bio = document.getElementById("campus_bio").value;
+        var logo = document.getElementById("campus_logo").files[0];
+        form_data.append("name",name);
+        form_data.append("abbr",abbr);
+        form_data.append("stage",stage);
+        form_data.append("pupose",pupose);
+        form_data.append("bio",bio);
+        form_data.append("logo",logo);
+        $.ajax({
+            type:'POST',
+            url :'/LearningGo/userinfo/addcampus',
+            data:form_data, 
+            contentType:false,
+            processData:false,
+            mimeType:"multipart/form-data",
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = JSON.parse(arg).status;
+                if(val == 'success')
+                {
+                    window.location.href=('/LearningGo/userinfo/teacher');
+                }else{
+                    alert('建校失败');
+                }
+   	        }
+        });
+    }
+	function createnewclass()
+    {
+        var form_data = new FormData();
+        var name = document.getElementById("class_name").value;
+        var abbr = document.getElementById("class_abbr").value;
+        var stage = document.getElementById("class_stage").value;
+        var bio = document.getElementById("class_bio").value;
+        var time = document.getElementById("class_time").value;
+        var price = document.getElementById("class_price").value;
+        var logo = document.getElementById("class_logo").files[0];
+        form_data.append("name",name);
+        form_data.append("abbr",abbr);
+        form_data.append("stage",stage);
+        form_data.append("bio",bio);
+        form_data.append("time",time);
+        form_data.append("price",price);
+        form_data.append("logo",logo);
+        $.ajax({
+            type:'POST',
+            url :'/LearningGo/userinfo/asscampus',
+            data:form_data, 
+            contentType:false,
+            processData:false,
+            mimeType:"multipart/form-data",
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = JSON.parse(arg).status;
+                alert(val);
    	        }
         });
     }

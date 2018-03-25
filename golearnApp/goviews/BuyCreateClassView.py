@@ -13,12 +13,17 @@ import json
 
 
 
-class BuyUpgradeView(View):
+class BuyCreateClassView(View):
     def get(self,request):
-        student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
+        teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
+        campus_name = request.GET['campus_name']
+        campuses= BaseTable.Campus.objects.filter(name=campus_name,teacher=teacher)
         hlsdic = {'status':'fail'}
-        if student.can_upgrade :
-            hlsdic['status'] = 'success'
+        if campuses.exists():
+            campus = campuses[0]
+            if campus.can_createclass:
+                hlsdic['status'] = 'success'
+            request.session['campusid']=campus.id
         response = JsonResponse(hlsdic, safe=False)
         response["Access-Control-Allow-Origin"] = "*"
         response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
@@ -27,22 +32,24 @@ class BuyUpgradeView(View):
         return response
 
     @csrf_exempt
-    def post(self,request):
-        student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
-        nowmoney = student.umoney
+    def post(self,request,campus):
+        teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
+        campus = BaseTable.Campus.objects.get(id=request.session['campusid'])
+        nowmoney = teacher.umoney
         money_update_sum = 100
         stat = "操作失败，请重试"
 
-        if (request.POST.get('is_add')== "upgrade"):
+        if (request.POST.get('is_add')== "createclass"):
             nowmoney = nowmoney - int(money_update_sum)
 
         if nowmoney < 0:
             stat = "购买失败，余额不足"
         else:
             stat = "success"
-            student.umoney = nowmoney
-            student.can_upgrade  = True
-            student.save()
+            teacher.umoney = nowmoney
+            campus.can_createclass  = True
+            teacher.save()
+            campus.save()
         result = {'status':stat}
         response = JsonResponse(result, safe=False)
         response["Access-Control-Allow-Origin"] = "*"

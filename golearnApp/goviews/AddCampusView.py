@@ -13,11 +13,12 @@ import json
 
 
 
-class BuyUpgradeView(View):
+class AddCampusView(View):
+    '''
     def get(self,request):
         student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
         hlsdic = {'status':'fail'}
-        if student.can_upgrade :
+        if ( student.can_upgrade) == "Tru" :
             hlsdic['status'] = 'success'
         response = JsonResponse(hlsdic, safe=False)
         response["Access-Control-Allow-Origin"] = "*"
@@ -25,26 +26,23 @@ class BuyUpgradeView(View):
         response["Access-Control-Max-Age"] = "1000"
         response["Access-Control-Allow-Headers"] = "*"
         return response
-
+    '''
     @csrf_exempt
     def post(self,request):
-        student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
-        nowmoney = student.umoney
-        money_update_sum = 100
-        stat = "操作失败，请重试"
-
-        if (request.POST.get('is_add')== "upgrade"):
-            nowmoney = nowmoney - int(money_update_sum)
-
-        if nowmoney < 0:
-            stat = "购买失败，余额不足"
-        else:
-            stat = "success"
-            student.umoney = nowmoney
-            student.can_upgrade  = True
-            student.save()
-        result = {'status':stat}
-        response = JsonResponse(result, safe=False)
+        teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
+        campus = BaseTable.Campus(name=request.POST.get('name'),
+                                  abbreviation=request.POST.get("abbr"),
+                                  stage=request.POST.get("stage"),
+                                  bio=request.POST.get("bio"),
+                                  pupose=request.POST.get("pupose"),
+                                  logo=request.FILES.getlist("logo")[0],
+                                  teacher=teacher,
+                                  can_createclass=False)
+        campus.save()
+        teacher.can_createschool=False
+        teacher.save()
+        hlsdic = {'status':'success'}
+        response = JsonResponse(hlsdic, safe=False)
         response["Access-Control-Allow-Origin"] = "*"
         response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
         response["Access-Control-Max-Age"] = "1000"

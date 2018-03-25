@@ -13,11 +13,11 @@ import json
 
 
 
-class BuyUpgradeView(View):
+class BuyCreateCampusView(View):
     def get(self,request):
-        student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
+        teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
         hlsdic = {'status':'fail'}
-        if student.can_upgrade :
+        if teacher.can_createschool:
             hlsdic['status'] = 'success'
         response = JsonResponse(hlsdic, safe=False)
         response["Access-Control-Allow-Origin"] = "*"
@@ -28,21 +28,21 @@ class BuyUpgradeView(View):
 
     @csrf_exempt
     def post(self,request):
-        student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
-        nowmoney = student.umoney
+        teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
+        nowmoney = teacher.umoney
         money_update_sum = 100
         stat = "操作失败，请重试"
 
-        if (request.POST.get('is_add')== "upgrade"):
+        if (request.POST.get('is_add')== "createcampus"):
             nowmoney = nowmoney - int(money_update_sum)
 
         if nowmoney < 0:
             stat = "购买失败，余额不足"
         else:
             stat = "success"
-            student.umoney = nowmoney
-            student.can_upgrade  = True
-            student.save()
+            teacher.umoney = nowmoney
+            teacher.can_createschool  = True
+            teacher.save()
         result = {'status':stat}
         response = JsonResponse(result, safe=False)
         response["Access-Control-Allow-Origin"] = "*"
