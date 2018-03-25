@@ -1,38 +1,5 @@
 
-Internal Server Error: /LearningGo/userinfo/student
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
-    return self.dispatch(request, *args, **kwargs)
-  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
-    return handler(request, *args, **kwargs)
-  File "./golearnApp/goviews/StudentView.py", line 18, in get
-    student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
-  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 387, in get
-    self.model._meta.object_name
-golearnApp.gomodels.BaseTable.DoesNotExist: Ustudentinfo matching query does not exist.
-Internal Server Error: /LearningGo/userinfo/student
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
-    response = self.process_exception_by_middleware(e, request)
-  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
-    response = wrapped_callback(request, *callback_args, **callback_kwargs)
-  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
-    return self.dispatch(request, *args, **kwargs)
-  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
-    return handler(request, *args, **kwargs)
-  File "./golearnApp/goviews/StudentView.py", line 18, in get
-    student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
-  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
-    return getattr(self.get_queryset(), name)(*args, **kwargs)
-  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 387, in get
-    self.model._meta.object_name
-golearnApp.gomodels.BaseTable.DoesNotExist: Ustudentinfo matching query does not exist.
-Not Found: /LearningGo/userinfo/asscampus
-Not Found: /LearningGo/userinfo/asscampus
-Not Found: /LearningGo/userinfo/asscampus
+Method Not Allowed (POST): /LearningGo/userinfo/student
+Method Not Allowed (POST): /LearningGo/userinfo/student
+Method Not Allowed (POST): /LearningGo/userinfo/student
+Method Not Allowed (POST): /LearningGo/userinfo/student
