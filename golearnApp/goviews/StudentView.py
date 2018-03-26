@@ -20,6 +20,8 @@ class StudentView(View):
         context['user'] = student
         logo = os.path.join('/static','image',student.name,os.path.basename(student.uimage.url))
         context['logo'] = logo
+        students_classes = BaseTable.Students_classes.objects.filter(student=student) 
+        context['teacher_classes'] = students_classes
         return render(request,'studentinfo.html',context);
 '''
     @csrf_exempt

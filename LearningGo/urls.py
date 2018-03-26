@@ -28,6 +28,7 @@ from golearnApp.goviews import BuyCreateCampusView
 from golearnApp.goviews import BuyCreateClassView
 from golearnApp.goviews import AddClassView
 from golearnApp.goviews import AddCampusView
+from golearnApp.goviews import ManageCampusView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -42,7 +43,8 @@ urlpatterns = [
     url(r'^LearningGo/userinfo/buycreatecampus',BuyCreateCampusView.BuyCreateCampusView.as_view()),
     url(r'^LearningGo/userinfo/buycreateclass',BuyCreateClassView.BuyCreateClassView.as_view()),
     url(r'^LearningGo/userinfo/addcampus',AddCampusView.AddCampusView.as_view()),
-    url(r'^LearningGo/userinfo/addclass/',AddClassView.AddClassView.as_view()),
+    url(r'^LearningGo/userinfo/addclass',AddClassView.AddClassView.as_view()),
+    url(r'^LearningGo/campus/manage/(?P<campusid>\d+)',ManageCampusView.ManageCampusView.as_view()),
     ]
 '''
     url(r'^LearningGo/index/videos/(?P<stage>\d+)',FindVideosView.FindVideosView.as_view()),

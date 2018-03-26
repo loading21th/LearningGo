@@ -34,7 +34,7 @@ def get_id():
 
 
 class Userinfo(models.Model):
-    id = models.IntegerField(default=get_id,primary_key=True)
+    id=models.AutoField(default=get_id,primary_key=True)
     name = models.CharField(max_length=40)
     upasswd = models.CharField(max_length=40)
     uemail = models.EmailField(max_length=40)
@@ -61,10 +61,10 @@ class Uteacherinfo(Userinfo):
         return str(self.id)
 
 class Campus(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id=models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
     abbreviation = models.CharField(max_length=10) 
-    stage = models.CharField(max_length=40)
+    stage = models.IntegerField()
     logo = models.ImageField(upload_to=get_image_path)
     bio = models.TextField()    
     pupose = models.TextField() 
@@ -75,10 +75,9 @@ class Campus(models.Model):
         return str(self.id)
 
 class Classroom(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id=models.AutoField(primary_key=True)
     name = models.CharField(max_length=40)
     abbreviation = models.CharField(max_length=10) 
-    teacher = models.CharField(max_length=40) 
     stage = models.IntegerField()
     logo = models.ImageField(upload_to=get_image_path)
     bio = models.TextField()    
@@ -98,7 +97,7 @@ class Students_classes(models.Model):
         return self.student.name + self.classroom.name
 
 
-class Teacher_classes(models.Model):
+class Teachers_classes(models.Model):
     teacher = models.ForeignKey('Uteacherinfo')
     classroom = models.ForeignKey('classroom')
 
@@ -106,7 +105,7 @@ class Teacher_classes(models.Model):
         return self.teacher.name + self.classroom.name
 
 class Homework(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id=models.AutoField(primary_key=True)
     campus = models.ForeignKey('Campus')
     classroom = models.ForeignKey('Classroom')
     homework = models.FileField(upload_to=get_upfile_path)

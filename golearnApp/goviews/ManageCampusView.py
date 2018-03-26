@@ -13,30 +13,24 @@ import json
 
 
 
-class BuyCreateClassView(View):
-    def get(self,request):
+class ManageCampusView(View,):
+    def get(self,request,campusid):
         teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
-        campusid = request.GET['campusid']
-        campuses= BaseTable.Campus.objects.filter(id=campusid,teacher=teacher)
-        hlsdic = {'status':'fail'}
-        if campuses.exists():
-            campus = campuses[0]
-            if campus.can_createclass:
-                hlsdic['status'] = 'success'
-            request.session['campusid']=campus.id
-        response = JsonResponse(hlsdic, safe=False)
-        response["Access-Control-Allow-Origin"] = "*"
-        response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
-        response["Access-Control-Max-Age"] = "1000"
-        response["Access-Control-Allow-Headers"] = "*"
-        return response
-
+        campus = BaseTable.Campus.objects.get(id=campusid)
+        classrooms = BaseTable.Classroom.objects.filter(campus=campus)
+        context = {}
+        context['campus'] = campus
+        context['classrooms'] = classrooms
+        logo = os.path.join('/static','image',teacher.name,os.path.basename(teacher.uimage.url))
+        context['logo'] = logo
+        return render(request,'campus_manage.html',context);
+    '''
     @csrf_exempt
-    def post(self,request):
+    def post(self,request,campus):
         teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
-        campus = BaseTable.Campus.objects.get(id=request.POST['campusid'])
+        campus = BaseTable.Campus.objects.get(id=request.session['campusid'])
         nowmoney = teacher.umoney
-        money_update_sum = 50
+        money_update_sum = 100
         stat = "操作失败，请重试"
 
         if (request.POST.get('is_add')== "createclass"):
@@ -57,3 +51,4 @@ class BuyCreateClassView(View):
         response["Access-Control-Max-Age"] = "1000"
         response["Access-Control-Allow-Headers"] = "*"
         return response
+    '''

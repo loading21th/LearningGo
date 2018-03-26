@@ -86,21 +86,20 @@
 		<div class="container">
 			<div class="row">
                 <div class="col-sm-12" style="border-style:solid;margin-top:10px;margin-bottom:10px">
-                    {% for classroom in student_classes%} 
-                        <div class="col-sm-2" style="border-style:solid;height:180px;">
-                            <img  style="height:95%;width:95%;padding-top:5%" src={{logo}}></img>
+                    {% for sc in students_classes%} 
+                        <div class="col-sm-2" style="height:180px;">
+                            <img  style="height:98%;width:98%;padding-top:2%" src={{logo}}></img>
                         </div>
-                        <div  class="col-sm-10" align="cneter" style="border-style:solid;height:180px;padding-top:10px">
-                            <h3>课程：{{classroom.name}}</h3>
-                            <br />
+                        <div  class="col-sm-10" align="cneter" style="height:180px;padding-top:10px">
+                            <h4>课程：{{sc.classroom.name}}</h4>
                             <div class="cols-sm-4 col-sm-offset-1">
-                                开课学校：{{classroom.campus.name}}
+                                开课学校：{{sc.classroom.campus.name}}
                                 <br />
-                                所属段位：{{classroom.stage}}
+                                所属段位：{{sc.classroom.stage}}
                                 <br />
-                                开课时间：{{classroom.time}}
+                                开课时间：{{sc.classroom.time}}
                                 <br />
-                                课程简介：{{classroom.bio}}
+                                课程简介：{{sc.classroom.bio}}
                                 <br />
                                 <button>删除课程</button>
                                 <br />

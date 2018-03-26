@@ -4,3 +4,565 @@ Method Not Allowed (POST): /LearningGo/userinfo/student
 Method Not Allowed (POST): /LearningGo/userinfo/student
 Method Not Allowed (POST): /LearningGo/userinfo/student
 Not Found: /LearningGo/register
+Internal Server Error: /LearningGo/userinfo/teacher
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/TeacherView.py", line 18, in get
+    teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
+  File "/usr/local/lib/python3.5/dist-packages/django/contrib/sessions/backends/base.py", line 48, in __getitem__
+    return self._session[key]
+KeyError: 'uid'
+Internal Server Error: /LearningGo/userinfo/teacher
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/TeacherView.py", line 23, in get
+    context['campuses'] = campuses
+UnboundLocalError: local variable 'campuses' referenced before assignment
+Not Found: /LearningGo/userinfo/index.html
+Internal Server Error: /LearningGo/userinfo/teacher
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 134, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 374, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/functional.py", line 33, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 417, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/functional.py", line 33, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 410, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "./LearningGo/urls.py", line 46, in <module>
+    url(r'^LearningGo/campus/manage/(?p<campusid>\d+)',ManageCampusView.ManageCampusView.as_view()),
+NameError: name 'ManageCampusView' is not defined
+Internal Server Error: /LearningGo/campus/manage/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 134, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 374, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/functional.py", line 33, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 417, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/functional.py", line 33, in __get__
+    res = instance.__dict__[self.name] = self.func(instance)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 410, in urlconf_module
+    return import_module(self.urlconf_name)
+  File "/usr/lib/python3.5/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+  File "<frozen importlib._bootstrap>", line 986, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 969, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 958, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 673, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 665, in exec_module
+  File "<frozen importlib._bootstrap>", line 222, in _call_with_frames_removed
+  File "./LearningGo/urls.py", line 31, in <module>
+    from golearnApp.goviews import ManageCampusView
+  File "./golearnApp/goviews/ManageCampusView.py", line 16, in <module>
+    class ManageCampusView(View,campusid):
+NameError: name 'campusid' is not defined
+Internal Server Error: /LearningGo/campus/manage/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 199, in regex
+    compiled_regex = re.compile(regex, re.UNICODE)
+  File "/usr/lib/python3.5/re.py", line 224, in compile
+    return _compile(pattern, flags)
+  File "/usr/lib/python3.5/re.py", line 293, in _compile
+    p = sre_compile.compile(pattern, flags)
+  File "/usr/lib/python3.5/sre_compile.py", line 536, in compile
+    p = sre_parse.parse(p, flags)
+  File "/usr/lib/python3.5/sre_parse.py", line 829, in parse
+    p = _parse_sub(source, pattern, 0)
+  File "/usr/lib/python3.5/sre_parse.py", line 437, in _parse_sub
+    itemsappend(_parse(source, state))
+  File "/usr/lib/python3.5/sre_parse.py", line 767, in _parse
+    len(char) + 1)
+sre_constants.error: unknown extension ?p at position 27
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 134, in get_response
+    resolver_match = resolver.resolve(request.path_info)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 376, in resolve
+    sub_match = pattern.resolve(new_path)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 235, in resolve
+    match = self.regex.search(path)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/urlresolvers.py", line 203, in regex
+    (regex, six.text_type(e)))
+django.core.exceptions.ImproperlyConfigured: "^LearningGo/campus/manage/(?p<campusid>\d+)" is not a valid regular expression: unknown extension ?p at position 27
+Internal Server Error: /LearningGo/userinfo/student
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/StudentView.py", line 18, in get
+    student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+golearnApp.gomodels.BaseTable.DoesNotExist: Ustudentinfo matching query does not exist.
+Internal Server Error: /LearningGo/userinfo/student
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/StudentView.py", line 18, in get
+    student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 387, in get
+    self.model._meta.object_name
+golearnApp.gomodels.BaseTable.DoesNotExist: Ustudentinfo matching query does not exist.
+Not Found: /LearningGo/campus/manage/index.html
+Internal Server Error: /LearningGo/index.html
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/IndexView.py", line 20, in get
+    result["user"] = "teacher"
+UnboundLocalError: local variable 'result' referenced before assignment
+Internal Server Error: /LearningGo/userinfo/buycreateclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 83, in __getitem__
+    list_ = super(MultiValueDict, self).__getitem__(key)
+KeyError: 'campus_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/BuyCreateClassView.py", line 19, in get
+    campus_name = request.GET['campus_name']
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+django.utils.datastructures.MultiValueDictKeyError: "'campus_name'"
+Internal Server Error: /LearningGo/userinfo/buycreateclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 83, in __getitem__
+    list_ = super(MultiValueDict, self).__getitem__(key)
+KeyError: 'campus_name'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/BuyCreateClassView.py", line 19, in get
+    campus_name = request.GET['campus_name']
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+django.utils.datastructures.MultiValueDictKeyError: "'campus_name'"
+Not Found: /LearningGo/userinfo/index.html
+Internal Server Error: /LearningGo/campus/manage/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/ManageCampusView.py", line 18, in get
+    teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
+  File "/usr/local/lib/python3.5/dist-packages/django/contrib/sessions/backends/base.py", line 48, in __getitem__
+    return self._session[key]
+KeyError: 'uid'
+Internal Server Error: /LearningGo/userinfo/buycreateclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+TypeError: post() missing 1 required positional argument: 'campus'
+Internal Server Error: /LearningGo/userinfo/buycreateclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 83, in __getitem__
+    list_ = super(MultiValueDict, self).__getitem__(key)
+KeyError: 'campusid'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/BuyCreateClassView.py", line 37, in post
+    campus = BaseTable.Campus.objects.get(id=request.POST['campusid'])
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/datastructures.py", line 85, in __getitem__
+    raise MultiValueDictKeyError(repr(key))
+django.utils.datastructures.MultiValueDictKeyError: "'campusid'"
+Not Found: /admin
+Internal Server Error: /LearningGo/userinfo/addcampus
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/sqlite3/base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+sqlite3.IntegrityError: NOT NULL constraint failed: golearnApp_campus.pupose
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/AddCampusView.py", line 41, in post
+    campus.save()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 700, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 728, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 812, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 851, in _do_insert
+    using=using, raw=raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 1039, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1064, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/utils.py", line 79, in execute
+    return super(CursorDebugWrapper, self).execute(sql, params)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/utils.py", line 95, in __exit__
+    six.reraise(dj_exc_type, dj_exc_value, traceback)
+  File "/usr/local/lib/python3.5/dist-packages/django/utils/six.py", line 685, in reraise
+    raise value.with_traceback(tb)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/utils.py", line 64, in execute
+    return self.cursor.execute(sql, params)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/backends/sqlite3/base.py", line 323, in execute
+    return Database.Cursor.execute(self, query, params)
+django.db.utils.IntegrityError: NOT NULL constraint failed: golearnApp_campus.pupose
+Not Found: /LearningGo/userinfo/addclass
+Internal Server Error: /LearningGo/userinfo/addclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 235, in get_response
+    response = middleware_method(request, response)
+  File "/usr/local/lib/python3.5/dist-packages/django/middleware/common.py", line 114, in process_response
+    return self.response_redirect_class(self.get_full_path_with_slash(request))
+  File "/usr/local/lib/python3.5/dist-packages/django/middleware/common.py", line 98, in get_full_path_with_slash
+    'url': request.get_host() + new_path,
+RuntimeError: You called this URL via POST, but the URL doesn't end in a slash and you have APPEND_SLASH set. Django can't redirect to the slash URL while maintaining POST data. Change your form to point to 192.168.12.105:8080/LearningGo/userinfo/addclass/ (note the trailing slash), or set APPEND_SLASH=False in your Django settings.
+Not Found: /LearningGo/userinfo/addclass
+Internal Server Error: /LearningGo/userinfo/addclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/AddClassView.py", line 43, in post
+    classroom.save()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 700, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 728, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 812, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 851, in _do_insert
+    using=using, raw=raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 1039, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1063, in execute_sql
+    for sql, params in self.as_sql():
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1023, in as_sql
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1023, in <listcomp>
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1022, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 962, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 728, in get_db_prep_save
+    prepared=False)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 720, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1853, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+Internal Server Error: /LearningGo/userinfo/addclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/AddClassView.py", line 43, in post
+    classroom.save()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 700, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 728, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 812, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 851, in _do_insert
+    using=using, raw=raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 1039, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1063, in execute_sql
+    for sql, params in self.as_sql():
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1023, in as_sql
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1023, in <listcomp>
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1022, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 962, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 728, in get_db_prep_save
+    prepared=False)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 720, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1853, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+Internal Server Error: /LearningGo/userinfo/teacher
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/TeacherView.py", line 25, in get
+    teachers_classes = BaseTable.Teacher_classes.filter(teacher=teacher)
+AttributeError: type object 'Teacher_classes' has no attribute 'filter'
+Internal Server Error: /LearningGo/userinfo/teacher
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/TeacherView.py", line 25, in get
+    teachers_classes = BaseTable.Teacher_classes.object.filter(teacher=teacher)
+AttributeError: type object 'Teacher_classes' has no attribute 'object'
+Internal Server Error: /LearningGo/userinfo/teacher
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/TeacherView.py", line 25, in get
+    teachers_classes = BaseTable.Teacher_classes.object.filter(teacher=teacher)
+AttributeError: type object 'Teacher_classes' has no attribute 'object'
+Internal Server Error: /LearningGo/userinfo/teacher
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/TeacherView.py", line 25, in get
+    teachers_classes = BaseTable.Teacher_classes.object.filter(teacher=teacher)
+AttributeError: type object 'Teacher_classes' has no attribute 'object'
+Internal Server Error: /LearningGo/userinfo/student
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/StudentView.py", line 24, in get
+    context['teacher_classes'] = teachers_classes
+NameError: name 'teachers_classes' is not defined
+Internal Server Error: /LearningGo/userinfo/addclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/AddClassView.py", line 48, in post
+    teacher_classroom.save()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 651, in save
+    "unsaved related object '%s'." % field.name
+ValueError: save() prohibited to prevent data loss due to unsaved related object 'classroom'.
+Internal Server Error: /LearningGo/userinfo/addclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/AddClassView.py", line 48, in post
+    teacher_classroom.save()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 651, in save
+    "unsaved related object '%s'." % field.name
+ValueError: save() prohibited to prevent data loss due to unsaved related object 'classroom'.
+Not Found: /admin
+Internal Server Error: /LearningGo/campus/manage/1
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "./golearnApp/goviews/ManageCampusView.py", line 18, in get
+    teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
+  File "/usr/local/lib/python3.5/dist-packages/django/contrib/sessions/backends/base.py", line 48, in __getitem__
+    return self._session[key]
+KeyError: 'uid'
+Internal Server Error: /LearningGo/userinfo/addclass
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 149, in get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "/usr/local/lib/python3.5/dist-packages/django/core/handlers/base.py", line 147, in get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 68, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/generic/base.py", line 88, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/views/decorators/csrf.py", line 58, in wrapped_view
+    return view_func(*args, **kwargs)
+  File "./golearnApp/goviews/AddClassView.py", line 43, in post
+    classroom.save()
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 700, in save
+    force_update=force_update, update_fields=update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 728, in save_base
+    updated = self._save_table(raw, cls, force_insert, force_update, using, update_fields)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 812, in _save_table
+    result = self._do_insert(cls._base_manager, using, fields, update_pk, raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/base.py", line 851, in _do_insert
+    using=using, raw=raw)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/manager.py", line 122, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/query.py", line 1039, in _insert
+    return query.get_compiler(using=using).execute_sql(return_id)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1063, in execute_sql
+    for sql, params in self.as_sql():
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1023, in as_sql
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1023, in <listcomp>
+    for obj in self.query.objs
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 1022, in <listcomp>
+    [self.prepare_value(field, self.pre_save_val(field, obj)) for field in fields]
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/sql/compiler.py", line 962, in prepare_value
+    value = field.get_db_prep_save(value, connection=self.connection)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 728, in get_db_prep_save
+    prepared=False)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 720, in get_db_prep_value
+    value = self.get_prep_value(value)
+  File "/usr/local/lib/python3.5/dist-packages/django/db/models/fields/__init__.py", line 1853, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''

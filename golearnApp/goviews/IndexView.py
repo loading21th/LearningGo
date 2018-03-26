@@ -14,8 +14,10 @@ import json
 
 class IndexView(View):
     def get(self,request):
+        users =  BaseTable.Ustudentinfo.objects.filter(id=request.session['uid'])
         result={"user":"student"}
-        if request.session['uid'] > 99999:
+        if not users.exists():
+            users = BaseTable.Uteacherinfo.objects.filter(id=request.session['uid'])
             result["user"] = "teacher"
         return render(request,'index.html',result);
     

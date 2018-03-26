@@ -29,7 +29,7 @@ class AddClassView(View):
     '''
     @csrf_exempt
     def post(self,request):
-        campus = BaseTable.Campus.objects.get(id=request.session['campusid'])
+        campus = BaseTable.Campus.objects.get(id=request.POST['campusid'])
         rtmp="rtmp://192.168.12.105:1935/"+campus.abbreviation+"/"+request.POST.get("abbr")
         classroom = BaseTable.Classroom(name=request.POST.get('name'),
                                   abbreviation=request.POST.get("abbr"),
@@ -41,8 +41,14 @@ class AddClassView(View):
                                   rtmpaddr=rtmp,
                                   campus=campus)
         classroom.save()
-        campus.can_createsclass=False
+
+        campus.can_createclass=False
         campus.save()
+
+        teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
+        teacher_classroom = BaseTable.Teachers_classes(teacher=teacher,classroom=classroom)
+        teacher_classroom.save()
+
         hlsdic = {'status':rtmp}
         response = JsonResponse(hlsdic, safe=False)
         response["Access-Control-Allow-Origin"] = "*"

@@ -86,27 +86,26 @@
 		<div class="container">
 			<div class="row">
                 <div class="col-sm-12" style="border-style:solid;margin-top:10px;margin-bottom:10px">
-                    {% for classroom in teacher_classes%} 
-                        <div class="col-sm-2" style="border-style:solid;height:180px;">
-                            <img  style="height:95%;width:95%;padding-top:5%" src={{logo}}></img>
+                    {% for ts in teachers_classes %} 
+                        <div class="col-sm-2" style="height:180px;">
+                            <img  style="height:98%;width:98%;padding-top:2%" src={{logo}}></img>
                         </div>
-                        <div  class="col-sm-10" align="cneter" style="border-style:solid;height:180px;padding-top:10px">
-                            <h3>课程：{{classroom.name}}</h3>
-                            <br />
+                        <div  class="col-sm-10" align="cneter" style="height:180px;padding-top:10px">
+                            <h4>课程：{{ts.classroom.name}}</h4>
                             <div class="cols-sm-4 col-sm-offset-1">
-                                开课学校：{{classroom.campus.name}}
+                                开课学校：{{ts.classroom.campus.name}}
                                 <br />
-                                所属段位：{{classroom.stage}}
+                                所属段位：{{ts.classroom.stage}}
                                 <br />
-                                开课时间：{{classroom.time}}
+                                开课时间：{{ts.classroom.time}}
                                 <br />
-                                课程简介：{{classroom.bio}}
+                                课程简介：{{ts.classroom.bio}}
                                 <br />
                                 <button>删除课程</button>
                                 <br />
                             </div>
                         </div>
-                    {% endfor%}
+                    {% endfor %}
 
                 </div>
                 <button class="col-sm-4 col-sm-offset-4" onclick="window.open('./index.html')">添加新课程</button>
@@ -119,14 +118,14 @@
 		<div class="container">
 			<div class="row">
                 <div class="col-sm-12" style="border-style:solid;margin-top:10px;margin-bottom:10px">
-                    {% for campus in teacher_campuses%} 
-                        <div class="col-sm-2" style="border-style:solid;height:180px;">
+                    {% for campus in campuses%} 
+                        <hr style="border:none;border-top:1px solid red"/>
+                        <div class="col-sm-2" style="height:180px;">
                             <img  style="height:95%;width:95%;padding-top:5%" src={{logo}}></img>
                         </div>
-                        <div  class="col-sm-10" align="cneter" style="border-style:solid;height:180px;padding-top:10px">
+                        <div  class="col-sm-10" align="cneter" style="d;height:180px;padding-top:10px">
                             <h3>{{campus.name}}学校</h3>
-                            <br />
-                            <div class="cols-sm-4 col-sm-offset-1">
+                            <div >
                                 开课学校：{{campus.name}}
                                 <br />
                                 所属段位：{{campus.stage}}
@@ -135,14 +134,12 @@
                                 <br />
                                 课程简介：{{campus.bio}}
                                 <br />
-                                <button>进入学校</button>
+                                <a href="/LearningGo/campus/manage/{{campus.id}}" class="btn" >进入学校</a>
                                 <br />
                             </div>
                         </div>
                     {% endfor%}
-
                 </div>
-                <button class="col-sm-4 col-sm-offset-4" onclick="window.open('./index.html')">添加新课程</button>
 			</div>
 		</div>
 

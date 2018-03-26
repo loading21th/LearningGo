@@ -42,7 +42,7 @@
 				val = JSON.parse(arg).status;
                 if(val == 'success')
                 {
-                    window.location.href=('/LearningGo/userinfo/teacher');
+                    window.location.href=('/LearningGo/campus/manage/'+campusid);
                 }else{
                     alert(val);
                 }
@@ -148,9 +148,10 @@
         form_data.append("time",time);
         form_data.append("price",price);
         form_data.append("logo",logo);
+        form_data.append("campusid",campusid);
         $.ajax({
             type:'POST',
-            url :'/LearningGo/userinfo/asscampus',
+            url :'/LearningGo/userinfo/addclass',
             data:form_data, 
             contentType:false,
             processData:false,

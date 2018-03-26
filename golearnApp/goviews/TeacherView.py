@@ -20,6 +20,10 @@ class TeacherView(View):
         context['user'] = teacher
         logo = os.path.join('/static','image',teacher.name,os.path.basename(teacher.uimage.url))
         context['logo'] = logo
+        campuses = BaseTable.Campus.objects.filter(teacher=teacher)
+        context['campuses'] = campuses
+        teachers_classes = BaseTable.Teachers_classes.objects.filter(teacher=teacher) 
+        context['teachers_classes'] = teachers_classes
         return render(request,'teacherinfo.html',context);
 
 '''

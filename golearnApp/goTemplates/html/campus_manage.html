@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html>
+	<head lang="en">
+		<meta charset="UTF-8">
+		<title>学校简介与课程选择</title>
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="/static/js/campus.js"></script>
+        <style type="text/css">
+        body {background-color:#A6FFFF}
+        </style>
+	</head>
+
+	<body >
+		<div class="container">
+            <div class = "row">
+			    <img class="col-sm-1" alt="logo" src="/static/images/logo.png" />
+					<ul class="col-sm-2 col-sm-push-10">
+					   <li class="col-sm-6"><a href="/LearningGo/index.html">首页</a></li>
+					   <li class="col-sm-6"><a href="/LearningGo/login.html">注销</a></li>
+					</ul>
+            </div>
+		</div>
+        <br />
+		<div class="container">
+			<div class="row">
+                <div class="col-sm-12"  style="height:300px;border-style:solid;">
+                    <h3>学校简介</h3>
+                    <br />
+                    <div class="col-sm-2" style="border-style:solid;height:180px;">
+                        <img  style="height:98%;width:98%;padding-top:2%" src={{logo}}></img>
+                    </div>
+                    <div  class="col-sm-10" align="cneter" style="border-style:solid;height:180px;padding-top:10px">
+                        <h3>{{campus.name}}学校</h3>
+                        <br />
+                        <div class="cols-sm-4 col-sm-offset-1">
+                            <br />
+                            所属段位：{{campus.stage}}
+                            <br />
+                            教学宗旨：{{campus.pupose}}
+                            <br />
+                            课程简介：{{campus.bio}}
+                            <br />
+                        </div>
+                    </div>
+                </div>
+			</div>
+		</div>
+        <br />
+        <h2>管理开设课程</h2>
+        <br />
+		<div class="container">
+			<div class="row">
+                <div class="col-sm-12" style="border-style:solid;margin-top:10px;margin-bottom:10px">
+                    {% for classroom in classrooms%} 
+                        <div class="col-sm-2" style="height:180px;">
+                            <img  style="height:98%;width:98%;padding-top:2%" src={{classroom.logo}}></img>
+                        </div>
+                        <div  class="col-sm-10" align="cneter" style="height:180px;padding-top:10px">
+                            <h4>课程：{{classroom.name}}</h4>
+                            <div class="cols-sm-4 col-sm-offset-1">
+                                所属段位：{{classroom.stage}}
+                                <br />
+                                开课时间：{{classroom.time}}
+                                <br />
+                                课程简介：{{classroom.bio}}
+                                <br />
+                                课程价格：{{classroom.price}}
+                                <br />
+                                直播地址：{{classroom.rtmpaddr}}
+                                <br />
+                                <button>删除课程</button>
+                                <button>更改课程</button>
+                                <br />
+                            </div>
+                        </div>
+                        <hr style="border:none;border-top:1px solid red"/>
+                    {% endfor%}
+                    <button class="col-sm-4 col-sm-offset-4" onclick="can_createclass({{campus.id}})">添加新课程</button>
+                </div>
+			</div>
+		</div>
+
+        <div id="zhifu" class="modal fade in" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a class="close" data-dismiss="modal">×</a>
+                        <h3 class="modal-title">支付页面</h3>
+                    </div>
+                    <div class="modal-body">
+                        <label>向用户：</label>
+                        <input  type ="text"  value="XXX围棋学校"/>
+                        <label>支付</label>
+                        <input  type ="text"  value="100"/>
+                        <label>棋子</label>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="schoolinfo.html" class="btn btn-success">确认</a>
+                        <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!--购买开课资格模态框-->
+        <div id="buy_createclass" class="modal fade in" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a class="close" data-dismiss="modal">×</a>
+                        <h3 class="modal-title">支付页面</h3>
+                    </div>
+                    <div class="modal-body">
+                        <label>向用户：围棋教育系统</label>
+                        <label>支付</label>
+                        <input  id="money_buy_class" type ="text"  value="100"/>
+                        <label>棋子</label>
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="updatemoney('createclass',{{campus.id}})" clbuttonss="btn btn-success">确认</button>
+                        <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!--开设新课模态框-->
+        <div id="createnewclass" class="modal fade in"  role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <a class="close" data-dismiss="modal">×</a>
+                        <h3 class="modal-title">创建课程页面</h3>
+                    </div>
+                    <div class="modal-body container">
+                        <div class="col-sm-10 col-sm-offset-1">
+                            <div class="col-sm-2">课程名称:</div>
+                            <div class="col-sm-10 ">
+                                <input id="class_name" placeholder="课程全称"></input>
+                            </div>
+                            <div class="col-sm-2">课程简写:</div>
+                            <div class="col-sm-10 ">
+                                <input id="class_abbr"  placeholder="课程英文缩写"></input>
+                            </div>
+                            <div class="col-sm-2">课程所属段位:</div>
+                            <div class="col-sm-10 ">
+                                <input id="class_stage"  placeholder="初级入门"></input>
+                            </div>
+                            <div class="col-sm-2">课程收费:</div>
+                            <div class="col-sm-10 ">
+                                <input id="class_price"  placeholder="100"></input>
+                                <label> 棋子/位学生</label>
+                            </div>
+                            <div class="col-sm-2">开课时间:</div>
+                            <div class="col-sm-10">
+                                <textarea id="class_time"   rows="10" cols="30">
+                                2017.10.10~2017.12.31;每周周内08：00--12：00;每周周内14：00--17：00
+                                </textarea>
+                            </div>
+                            <div class="col-sm-2">课程描述:</div>
+                            <div class="col-sm-10 ">
+                                <textarea id="class_bio"   rows="10" cols="30">介绍您的课程</textarea>
+                            </div>
+                            <div class="col-sm-2">课程Logo：</div>
+                            <div class="col-sm-10 ">
+                                <input id="class_logo" class="col-sm-4" type ="file" name="课程Logo" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button onclick="createnewclass({{campus.id}})" class="btn btn-success">确认</button>
+                        <a href="schoolinfo.html" class="btn" data-dismiss="modal">取消</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</body>
+
+</html>
