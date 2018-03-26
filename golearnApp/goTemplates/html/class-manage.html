@@ -7,7 +7,7 @@
 		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 		<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
 		<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="/static/js/student.js"></script>
+		<script type="text/javascript" src="/static/js/teacher.js"></script>
         <style type="text/css">
         body {background-color:#A6FFFF}
         </style>
@@ -44,7 +44,6 @@
                             <br />
                             课程简介：{{campus.bio}}
                             <br />
-                            <br />
                         </div>
                     </div>
                 </div>
@@ -71,14 +70,15 @@
                                 <br />
                                 课程简介：{{classroom.bio}}
                                 <br />
-                                课程价格：{{classroom.price}}
+                                直播地址：{{classroom.rtmpaddr}}
                                 <br />
-                                <button>添加该课程</button>
+                                <button>删除课程</button>
+                                <button>更改课程</button>
                                 <br />
                             </div>
                         </div>
                     {% endfor%}
-
+                    <button class="col-sm-4 col-sm-offset-4" onclick="can_createclass()">添加新课程</button>
                 </div>
                 <button class="col-sm-4 col-sm-offset-4" onclick="window.open('./index.html')">添加新课程</button>
 			</div>

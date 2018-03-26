@@ -31,9 +31,11 @@ def get_id():
         userid = teacherid + 1
     return userid
 
+
+
 class Userinfo(models.Model):
     id = models.IntegerField(default=get_id,primary_key=True)
-    name = models.TextField(max_length=40)
+    name = models.CharField(max_length=40)
     upasswd = models.CharField(max_length=40)
     uemail = models.EmailField(max_length=40)
     ubirth = models.DateField(max_length=40)
@@ -60,7 +62,7 @@ class Uteacherinfo(Userinfo):
 
 class Campus(models.Model):
     id = models.IntegerField(primary_key=True)
-    name = models.TextField(max_length=40)
+    name = models.CharField(max_length=40)
     abbreviation = models.CharField(max_length=10) 
     stage = models.CharField(max_length=40)
     logo = models.ImageField(upload_to=get_image_path)
@@ -74,7 +76,7 @@ class Campus(models.Model):
 
 class Classroom(models.Model):
     id = models.IntegerField(primary_key=True)
-    name = models.TextField(max_length=40)
+    name = models.CharField(max_length=40)
     abbreviation = models.CharField(max_length=10) 
     teacher = models.CharField(max_length=40) 
     stage = models.IntegerField()
@@ -114,7 +116,7 @@ class Homework(models.Model):
 
 class Videos(models.Model):
     stage = models.IntegerField()
-    name = models.TextField(max_length=40)
+    name = models.CharField(max_length=40)
     logo = models.ImageField(upload_to=get_image_path)
     addr = models.FileField(upload_to=get_video_path)
 
