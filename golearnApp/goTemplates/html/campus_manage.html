@@ -26,23 +26,42 @@
         <br />
 		<div class="container">
 			<div class="row">
-                <div class="col-sm-12"  style="height:300px;border-style:solid;">
+                <div class="col-sm-12"  style="border-style:solid;">
                     <h3>学校简介</h3>
                     <br />
-                    <div class="col-sm-2" style="border-style:solid;height:180px;">
-                        <img  style="height:98%;width:98%;padding-top:2%" src={{logo}}></img>
+                    <div class="col-sm-2" style="height:200px;">
+                        <img  style="height:80%;width:100%;" src={{campus.logo}}></img>
+                        <hr/>
+                        <button  onclick="update_campusinfo({{campus.id}})" class="btn btn-success">更改并提交右侧信息</button>
                     </div>
-                    <div  class="col-sm-10" align="cneter" style="border-style:solid;height:180px;padding-top:10px">
-                        <h3>{{campus.name}}学校</h3>
+                    <div  class="col-sm-10" align="cneter" style="padding-bottom:10px;padding-top:10px">
+                        <h4>{{campus.name}}学校</h4>
                         <br />
-                        <div class="cols-sm-4 col-sm-offset-1">
-                            <br />
-                            所属段位：{{campus.stage}}
-                            <br />
-                            教学宗旨：{{campus.pupose}}
-                            <br />
-                            课程简介：{{campus.bio}}
-                            <br />
+                        <div class="col-sm-12">
+                            <div class="col-sm-2">学校名称:</div>
+                            <div class="col-sm-4">
+                                <input id="campus_name" value={{campus.name}}></input>
+                            </div>
+                            <div class="col-sm-2">学校简写:</div>
+                            <div class="col-sm-4">
+                                <input id="campus_abbr"  value={{campus.abbreviation}}></input>
+                            </div>
+                            <div class="col-sm-2">学校所属段位:</div>
+                            <div class="col-sm-4 ">
+                                <input id="campus_stage"  value={{campus.stage}}></input>
+                            </div>
+                            <div class="col-sm-2">学校Logo：</div>
+                            <div class="col-sm-4 ">
+                                <input id="campus_logo" class="col-sm-4" type ="file" name="学校Logo" />
+                            </div>
+                            <div class="col-sm-2">教学宗旨:</div>
+                            <div class="col-sm-4">
+                                <textarea id="campus_pupose"   rows="5" cols="30">{{campus.pupose}}</textarea>
+                            </div>
+                            <div class="col-sm-2">学校描述:</div>
+                            <div class="col-sm-4">
+                                <textarea id="campus_bio"   rows="5" cols="30">{{campus.bio}}</textarea>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -58,27 +77,46 @@
                         <div class="col-sm-2" style="height:180px;">
                             <img  style="height:98%;width:98%;padding-top:2%" src={{classroom.logo}}></img>
                         </div>
-                        <div  class="col-sm-10" align="cneter" style="height:180px;padding-top:10px">
-                            <h4>课程：{{classroom.name}}</h4>
-                            <div class="cols-sm-4 col-sm-offset-1">
-                                所属段位：{{classroom.stage}}
-                                <br />
-                                开课时间：{{classroom.time}}
-                                <br />
-                                课程简介：{{classroom.bio}}
-                                <br />
-                                课程价格：{{classroom.price}}
-                                <br />
-                                直播地址：{{classroom.rtmpaddr}}
-                                <br />
-                                <button>删除课程</button>
-                                <button>更改课程</button>
-                                <br />
+                        <div  class="col-sm-10" align="cneter" style="padding-bottom:10px;padding-top:10px">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2">课程名称:</div>
+                                <div class="col-sm-4">
+                                    <input id="classroom_name" value={{classroom.name}}></input>
+                                </div>
+                                <div class="col-sm-2">课程简写:</div>
+                                <div class="col-sm-4">
+                                    <input id="classroom_abbr"  value={{classroom.abbreviation}}></input>
+                                </div>
+                                <div class="col-sm-2">课程所属段位:</div>
+                                <div class="col-sm-4 ">
+                                    <input id="classroom_stage"  value={{classroom.stage}}></input>
+                                </div>
+                                <div class="col-sm-2">课程Logo：</div>
+                                <div class="col-sm-4 ">
+                                    <input id="classroom_logo" class="col-sm-4" type ="file" name="课程Logo" />
+                                </div>
+                                <div class="col-sm-2">教学描述:</div>
+                                <div class="col-sm-4">
+                                    <textarea id="classroom_bio"   rows="4" cols="30">{{classroom.bio}}</textarea>
+                                </div>
+                                <div class="col-sm-2">课程时间:</div>
+                                <div class="col-sm-4">
+                                    <textarea id="classroom_time"   rows="4" cols="30">{{classroom.time}}</textarea>
+                                </div>
+                                <div class="col-sm-2">课程收费:</div>
+                                <div class="col-sm-4 ">
+                                    <input id="classroom_price"  value={{classroom.price}}></input>
+                                </div>
+                                <div class="col-sm-2">        </div>
+                                <div class="col-sm-4 ">
+                                    <button  onclick="update_classroominfo({{campus.id}},{{classroom.id}})" class="btn btn-success">更改并提交课程信息</button>
+                                </div>
                             </div>
                         </div>
-                        <hr style="border:none;border-top:1px solid red"/>
+                        <div class="col-sm-12" style="height:10px;"></div>
                     {% endfor%}
                     <button class="col-sm-4 col-sm-offset-4" onclick="can_createclass({{campus.id}})">添加新课程</button>
+                    <div class="col-sm-12" style="height:10px;"></div>
                 </div>
 			</div>
 		</div>
@@ -139,19 +177,19 @@
                         <div class="col-sm-10 col-sm-offset-1">
                             <div class="col-sm-2">课程名称:</div>
                             <div class="col-sm-10 ">
-                                <input id="class_name" placeholder="课程全称"></input>
+                                <input id="class_name" value="课程全称"></input>
                             </div>
                             <div class="col-sm-2">课程简写:</div>
                             <div class="col-sm-10 ">
-                                <input id="class_abbr"  placeholder="课程英文缩写"></input>
+                                <input id="class_abbr"  value="课程英文缩写"></input>
                             </div>
                             <div class="col-sm-2">课程所属段位:</div>
                             <div class="col-sm-10 ">
-                                <input id="class_stage"  placeholder="初级入门"></input>
+                                <input id="class_stage"  value="初级入门"></input>
                             </div>
                             <div class="col-sm-2">课程收费:</div>
                             <div class="col-sm-10 ">
-                                <input id="class_price"  placeholder="100"></input>
+                                <input id="class_price"  value="100"></input>
                                 <label> 棋子/位学生</label>
                             </div>
                             <div class="col-sm-2">开课时间:</div>

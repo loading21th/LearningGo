@@ -10,10 +10,11 @@ from django.http import JsonResponse
 from golearnApp.gomodels import BaseTable
 import os 
 import json
+import logging
 
 
-
-class TeacherView(View):
+class CampusView(View):
+    '''
     def get(self,request):
         teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
         context = {}
@@ -23,25 +24,32 @@ class TeacherView(View):
         teachers_classes = BaseTable.Teachers_classes.objects.filter(teacher=teacher) 
         context['teachers_classes'] = teachers_classes
         return render(request,'teacherinfo.html',context);
+    '''
 
     @csrf_exempt
-    def post(self,request):
-        teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        birth = request.POST.get('birth')
-        sex = request.POST.get('sex')
+    def post(self,request,campusid):
+        campus = BaseTable.Campus.objects.get(id=int(campusid))
+        logger = logging.getLogger('django')
+
+        logger.error("*****************\n")
+        logger.error(request.POST.get("name"))
+        logger.error("##################\n")
+        logger.error(campus.name)
+        logger.error("--------------------\n")
+        campus.name=request.POST.get("name"),
+        logger.error(campus.name)
+        campus.abbreviation=request.POST.get("abbr"),
+        campus.stage=request.POST.get("stage"),
+        campus.bio=request.POST.get("bio"),
+        campus.pupose=request.POST.get("pupose"),
 
         if request.FILES:
-            image = request.FILES.getlist('image')[0]
-            teacher.uimage = image
+            campus.logo=request.FILES.getlist("logo")[0],
+            logger.error(campus.logo)
 
-        teacher.name = name
-        teacher.uemail = email
-        teacher.ubirth = birth
-        teacher.usex = sex
-
-        teacher.save()
+        logger.error("*****************\n")
+        campus.save()
+        logger.error("*****************\n")
         result = {'status':"success"}
         response = JsonResponse(result, safe=False)
         response["Access-Control-Allow-Origin"] = "*"

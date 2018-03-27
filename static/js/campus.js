@@ -192,3 +192,91 @@
    	        }
         });
     }
+    
+	function update_campusinfo(campusid)
+    {
+        var form_data = new FormData();
+        var name = document.getElementById("campus_name").value;
+        var abbr = document.getElementById("campus_abbr").value;
+        var stage = document.getElementById("campus_stage").value;
+        var pupose = document.getElementById("campus_pupose").value;
+        var bio = document.getElementById("campus_bio").value;
+        form_data.append("name",name);
+        form_data.append("abbr",abbr);
+        form_data.append("stage",stage);
+        form_data.append("pupose",pupose);
+        form_data.append("bio",bio);
+        var imageNode = document.getElementById('campus_logo');
+        if(imageNode.value!="")
+        {
+            var image = imageNode.files[0];
+            form_data.append("logo",image);
+        }
+        $.ajax({
+            type:'POST',
+            url :'/LearningGo/campus/'+campusid,
+            data:form_data, 
+            contentType:false,
+            processData:false,
+            mimeType:"multipart/form-data",
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = JSON.parse(arg).status
+                if(val == 'success')
+                {
+                    window.location.href=('/LearningGo/campus/'+campusid);
+                }else{
+                    alert('更新学校信息失败');
+                }
+   	        }
+        });
+    }
+	function update_classroominfo(campusid,classroomid)
+    {
+        var form_data = new FormData();
+        var name = document.getElementById("classroom_name").value;
+        var abbr = document.getElementById("classroom_abbr").value;
+        var stage = document.getElementById("classroom_stage").value;
+        var bio = document.getElementById("classroom_bio").value;
+        var time = document.getElementById("classroom_time").value;
+        var price = document.getElementById("classroom_price").value;
+        form_data.append("name",name);
+        form_data.append("abbr",abbr);
+        form_data.append("stage",stage);
+        form_data.append("bio",bio);
+        form_data.append("time",time);
+        form_data.append("price",price);
+        form_data.append("campusid",campusid);
+        var imageNode = document.getElementById('classroom_logo');
+        if(imageNode.value!="")
+        {
+            var image = imageNode.files[0];
+            form_data.append("logo",image);
+        }
+        $.ajax({
+            type:'POST',
+            url :'/LearningGo/classroom/'+classroomid,
+            data:form_data, 
+            contentType:false,
+            processData:false,
+            mimeType:"multipart/form-data",
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = JSON.parse(arg).status
+                if(val == 'success')
+                {
+                    window.location.href=('/LearningGo/campus/'+campusid);
+                }else{
+                    alert('更新课堂信息失败');
+                }
+   	        }
+        });
+    }

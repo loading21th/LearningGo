@@ -98,3 +98,43 @@
    	        }
         });
     }
+	function update_info()
+    {
+        var form_data = new FormData();
+        var name = document.getElementById('uname').value;
+        var email = document.getElementById('uemail').value;
+        var birth = document.getElementById('ubirth').value;
+        var sex = document.getElementById('usex').value;
+        var imageNode = document.getElementById('uimage');
+        if(imageNode.value!="")
+        {
+            var image = imageNode.files[0];
+            form_data.append("image",image);
+        }
+        form_data.append("name",name);
+        form_data.append("email",email);
+        form_data.append("birth",birth);
+        form_data.append("sex",sex);
+        $.ajax({
+            type:'POST',
+            url :'/LearningGo/userinfo/student',
+            data:form_data, 
+            contentType:false,
+            processData:false,
+            mimeType:"multipart/form-data",
+            error:function()
+            {
+                alert('请求失败');
+            },
+            success:function(arg)
+            {
+				val = JSON.parse(arg).status;
+                if(val == 'success')
+                {
+                    window.location.href=('/LearningGo/userinfo/student');
+                }else{
+                    alert('修改信息失败');
+                }
+   	        }
+        });
+    }

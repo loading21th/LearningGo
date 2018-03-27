@@ -21,36 +21,31 @@ class StudentView(View):
         logo = os.path.join('/static','image',student.name,os.path.basename(student.uimage.url))
         context['logo'] = logo
         students_classes = BaseTable.Students_classes.objects.filter(student=student) 
-        context['teacher_classes'] = students_classes
+        context['students_classes'] = students_classes
         return render(request,'studentinfo.html',context);
-'''
+
     @csrf_exempt
     def post(self,request):
-        student = BaseTable.Ustudentinfo.objects.get(name=request.session['name'])
-        nowmoney = student.umoney
-        money_update_sum = request.POST.get('money_update_sum')
-        stat = "操作失败，请重试"
+        student = BaseTable.Ustudentinfo.objects.get(id=request.session['uid'])
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        birth = request.POST.get('birth')
+        sex = request.POST.get('sex')
 
-        if (request.POST.get('is_add')== "yes"):
-            nowmoney = nowmoney + int(money_update_sum)
-        else:
-            nowmoney = nowmoney - int(money_update_sum)
+        if request.FILES:
+            image = request.FILES.getlist('image')[0]
+            student.uimage = image
 
-        if nowmoney < 0:
-            stat = "提款失败，余额不足"
-        elif nowmoney > 10000:
-            stat = "充值资金过多，有风险"
-        else:
-            stat = "success"
-            student.umoney = nowmoney
-            if (request.POST.get('is_add')== "pay_to_sys"):
-                student.can_upgrade  = True
-            student.save()
-        result = {'status':stat}
+        student.name = name
+        student.uemail = email
+        student.ubirth = birth
+        student.usex = sex
+
+        student.save()
+        result = {'status':"success"}
         response = JsonResponse(result, safe=False)
         response["Access-Control-Allow-Origin"] = "*"
         response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
         response["Access-Control-Max-Age"] = "1000"
         response["Access-Control-Allow-Headers"] = "*"
         return response
-'''

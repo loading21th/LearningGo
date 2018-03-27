@@ -10,6 +10,7 @@ from django.http import JsonResponse
 from golearnApp.gomodels import BaseTable
 import os 
 import json
+import logging
 
 
 
@@ -30,6 +31,8 @@ class AddCampusView(View):
     @csrf_exempt
     def post(self,request):
         teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
+        logger = logging.getLogger('django')
+        logger.error(request.POST.get('name'))
         campus = BaseTable.Campus(name=request.POST.get('name'),
                                   abbreviation=request.POST.get("abbr"),
                                   stage=request.POST.get("stage"),
@@ -38,6 +41,7 @@ class AddCampusView(View):
                                   logo=request.FILES.getlist("logo")[0],
                                   teacher=teacher,
                                   can_createclass=False)
+        logger.error(campus.name)
         campus.save()
         teacher.can_createschool=False
         teacher.save()

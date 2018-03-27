@@ -17,8 +17,8 @@
             <div class = "row">
                 <img class="col-sm-1" alt="logo" src="/static/images/logo.png" />
 					<ul class="col-sm-2 col-sm-offset-9">
-					   <li class="col-sm-6"><a href="./index.html">首页</a></li>
-					   <li class="col-sm-6"><a href="./login.html">注销</a></li>
+					   <li class="col-sm-6"><a href="/LearningGo/index.html">首页</a></li>
+					   <li class="col-sm-6"><a href="/LearningGo/login.html">注销</a></li>
 					</ul>
             </div>
 		</div>
@@ -28,7 +28,7 @@
 		<div class="container">
 			<div class="row">
                 <div class="col-sm-2" style="border-style:solid;height:180px;">
-                    <img  style="height:95%;width:95%;padding-top:5%" src={{logo}}></img>
+                    <img  style="height:95%;width:95%;padding-top:5%" src="{{user.uimage}}"></img>
                 </div>
                 <div  class="col-sm-10" align="cneter" style="border-style:solid;height:180px;padding-top:10px">
                     <h3>钱包</h3>
@@ -50,29 +50,29 @@
         <h2>基本信息</h2>
 		<div class="container">
 			<div class="row">
-                <div class="col-sm-12"  style="height:240px;border-style:solid;padding-top:10px;padding-bottom:10px">
+                <div class="col-sm-12"  style="height:150px;border-style:solid;padding-top:10px;padding-bottom:10px">
                     <div class="container col-sm-12">
-                        <input class="col-sm-4 col-sm-offset-1" type ="text"  value="用户身份：教师">
+                        <div class="col-sm-4 col-sm-offset-1">用户身份：教师</div>
                         <button class="col-sm-4 col-sm-offset-2" onclick="can_createcampus()" >创建新学校</button>
 		    		    <form >
                             <div  class="col-sm-4 col-sm-offset-1" >
                                 <label>昵    称：</label>
-                                <input type="text" value={{user.name}} />
+                                <input id="uname" type="text" value={{user.name}} />
                             </div>
                             <div  class="col-sm-4 col-sm-offset-2" >
                                 <label>邮    箱：</label>
-                                <input type="text" value={{user.uemail}} />
+                                <input id="uemail"  type="text" value={{user.uemail}} />
                             </div>
                             <div  class="col-sm-4 col-sm-offset-1" >
                                 <label>出生年月：</label>
-                                <input type="text" value={{user.ubirth}} />
+                                <input id="ubirth"  type="text" value={{user.ubirth|date:"Y-m-d"}} />
                             </div>
                             <div  class="col-sm-4 col-sm-offset-2" >
                                 <label>性    别：</label>
-                                <input type="text" value={{user.usex}} />
+                                <input id="usex"  type="text" value={{user.usex}} />
                             </div>
-                            <input  class="col-sm-4 col-sm-offset-1" type ="file" name="用户头像" />
-		            		<input class="col-sm-4 col-sm-offset-2" type="submit"  value="提 交" >
+                            <input id="uimage"class="col-sm-4 col-sm-offset-1" type ="file" name="用户头像" />
+		            		<input class="col-sm-4 col-sm-offset-2" type="submit" onclick="update_info()"  value="提 交" >
                         </form>
                     </div>
 		    	</div>
@@ -88,7 +88,7 @@
                 <div class="col-sm-12" style="border-style:solid;margin-top:10px;margin-bottom:10px">
                     {% for ts in teachers_classes %} 
                         <div class="col-sm-2" style="height:180px;">
-                            <img  style="height:98%;width:98%;padding-top:2%" src={{logo}}></img>
+                            <img  style="height:98%;width:98%;padding-top:2%" src={{ts.classroom.logo}}></img>
                         </div>
                         <div  class="col-sm-10" align="cneter" style="height:180px;padding-top:10px">
                             <h4>课程：{{ts.classroom.name}}</h4>
@@ -121,7 +121,7 @@
                     {% for campus in campuses%} 
                         <hr style="border:none;border-top:1px solid red"/>
                         <div class="col-sm-2" style="height:180px;">
-                            <img  style="height:95%;width:95%;padding-top:5%" src={{logo}}></img>
+                            <img  style="height:95%;width:95%;padding-top:5%" src={{campus.logo}}></img>
                         </div>
                         <div  class="col-sm-10" align="cneter" style="d;height:180px;padding-top:10px">
                             <h3>{{campus.name}}学校</h3>

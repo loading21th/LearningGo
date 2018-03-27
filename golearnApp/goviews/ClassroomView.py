@@ -13,7 +13,8 @@ import json
 
 
 
-class TeacherView(View):
+class ClassroomView(View):
+    '''
     def get(self,request):
         teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
         context = {}
@@ -23,25 +24,33 @@ class TeacherView(View):
         teachers_classes = BaseTable.Teachers_classes.objects.filter(teacher=teacher) 
         context['teachers_classes'] = teachers_classes
         return render(request,'teacherinfo.html',context);
-
+    '''
+        
     @csrf_exempt
-    def post(self,request):
-        teacher = BaseTable.Uteacherinfo.objects.get(id=request.session['uid'])
-        name = request.POST.get('name')
-        email = request.POST.get('email')
-        birth = request.POST.get('birth')
-        sex = request.POST.get('sex')
+    def post(self,request,classroomid):
+        classroom = BaseTable.Classroom.objects.get(id=int(classroomid))
+
+        name=request.POST.get('name'),
+        abbreviation=request.POST.get('abbr'),
+        stage=request.POST.get('stage'),
+        bio=request.POST.get('bio'),
+        time=request.POST.get('time'),
+        price=request.POST.get('price'),
 
         if request.FILES:
-            image = request.FILES.getlist('image')[0]
-            teacher.uimage = image
+            logo=request.FILES.getlist("logo")[0],
+            classroom.logo=logo
 
-        teacher.name = name
-        teacher.uemail = email
-        teacher.ubirth = birth
-        teacher.usex = sex
+        classroom.name = name
+        classroom.abbreviation = abbreviation
+        classroom.stage = int(stage)
+        classroom.bio = bio
+        classroom.time = time
+        classroom.price = int(price)
+        rtmp="rtmp://192.168.12.105:1935/"+classroom.campus.abbreviation+"/"+abbreviation
+        classroom.rtmpaddr = rtmp
 
-        teacher.save()
+        classroom.save()
         result = {'status':"success"}
         response = JsonResponse(result, safe=False)
         response["Access-Control-Allow-Origin"] = "*"
